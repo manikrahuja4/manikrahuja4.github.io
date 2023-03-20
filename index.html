@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Maverick Dresses - Leading Uniform Supplier, Manufacturer & Designer
+    </title>
+    <script
+      type="text/javascript"
+      src="js/lightbox-plus-jquery.min.js"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="css/lightbox.min.css" />
+    <!--     <script src="app.js"></script>
+    <link rel="stylesheet" href="gallery.css"> -->
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/swiper.css" />
+
+    <link
+      rel="shortcut icon"
+      href="images/LogoL-onscroll.svg"
+      type="image/x-icon"
+    />
+    <!-- Font Awesome -->
+    <script src="js/all.js"></script>
+    <link rel="stylesheet" href="css/all.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- page visits -->
+    <script
+      src="https://api.countapi.xyz/hit/maverickdresses/visits?callback=liveViews"
+      async
+    ></script>
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body onload="display_ct();">
+    <div
+      class="all"
+      data-bs-spy="scroll"
+      data-bs-target="#navbar-example2"
+      data-bs-root-margin="0px 0px -40%"
+      data-bs-smooth-scroll="true"
+      class="scrollspy-example bg-light p-3 rounded-2"
+      tabindex="0"
+    >
+      <header id="header">
+        <div class="navigation-bar">
+          <div class="div-top">
+            <div>
+              <p>
+                Total Site Views:
+                <span id="visits"></span>
+              </p>
+              <div id="progress-bar"></div>
+              <!-- <p>Total Site Visits <span>234</span> </p> -->
+            </div>
+            <div class="icons">
+              <i class="fa-brands fa-facebook" style="cursor: pointer"></i>
+              <i class="fa-brands fa-instagram" style="cursor: pointer"></i>
+              <i class="fa-brands fa-twitter" style="cursor: pointer"></i>
+              <i class="fa-brands fa-youtube" style="cursor: pointer"></i>
+            </div>
+          </div>
+          <nav class="navigation top-nav">
+            <i
+              class="fa-solid fa-stream"
+              id="stream-desktop"
+              onclick="show()"
+              style="font-size: 1.3rem; color: #fff; cursor: pointer"
+            ></i>
+
+            <a href="#header"
+              ><img
+                src="images/logoD.svg"
+                class="logo"
+                id="logo-off-scroll"
+                alt=""
+            /></a>
+            <i
+              class="fa-solid fa-stream"
+              id="stream-phone"
+              onclick="show()"
+              style="font-size: 1.3rem; color: #fff; cursor: pointer"
+            ></i>
+
+            <a
+              href=""
+              id="contact-now"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              >Contact Us</a
+            >
+          </nav>
+
+          <nav class="navigation">
+            <i
+              class="fa-solid fa-stream"
+              id="stream-desktop"
+              onclick="show()"
+              style="font-size: 1.4rem; color: #2b3467; cursor: pointer"
+            ></i>
+
+            <!-- <a href="#"><img class="logo" src="images/logo1.png" alt="LOGO" /></a> -->
+            <a href="#header"
+              ><img
+                src="images/logoD.svg"
+                class="logo"
+                id="logo-off-scroll"
+                alt=""
+            /></a>
+            <!-- <a href="#"><img src="images/logoL.svg" class="logo" id="logo-on-scroll" alt=""></a> -->
+            <i
+              class="fa-solid fa-stream"
+              id="stream-phone"
+              onclick="show()"
+              style="font-size: 1.4rem; color: #2b3467; cursor: pointer"
+            ></i>
+
+            <a
+              href=""
+              id="contact-now"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              >Contact Us</a
+            >
+          </nav>
+          <ul class="nav hidden-nav" id="hidden-nav">
+            <i class="fa-solid fa-x" onclick="hide()"></i>
+            <li>
+              <a class="active" href="#header" onclick="hide()">Home</a>
+            </li>
+            <li>
+              <a href="#categories" onclick="hide()">Categories</a>
+            </li>
+            <li>
+              <a href="#gallery" onclick="hide()">Gallery</a>
+            </li>
+            <li>
+              <a href="#about" onclick="hide()">About Us</a>
+            </li>
+            <li>
+              <a href="#contact" onclick="hide()">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+        <style type="text/css">
+          .carousel.container {
+            --bs-gutter-x: 0rem !important;
+          }
+        </style>
+        <div
+          id="carouselExampleInterval"
+          class="carousel slide container"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item carousel-1" data-bs-interval="1000">
+              <div>
+                <h1>Maverick Dresses</h1>
+                <p>
+                  Maverick Dresses is a leading uniform designer and supplier,
+                  renowned for their fresh and innovative designs.<span
+                    class="hide-text"
+                  >
+                    They are committed to providing each and every customer with
+                    a unique and stylish uniform that sets them apart from the
+                    rest.</span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item carousel-2" data-bs-interval="2000">
+              <div>
+                <p>
+                  Maverick Dresses is the leading school uniform supplier,
+                  offering innovative designs tailored to each customer. Our
+                  mission is to provide quality uniforms that are comfortable
+                  and stylish.<span class="hide-text">
+                    With our wide selection of fabrics and colors, you can find
+                    the perfect uniform for your school.</span
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item active carousel-3">
+              <div class="animate__animated animate__fadeIn">
+                <style>
+                  .inquire-contact:hover {
+                    color: #fff !important;
+                    border-color: #fff !important;
+                    background: transparent;
+                  }
+                </style>
+                <h1>
+                  Trying To Replace Your Old School Uniform Supplier With A
+                  Better One?
+                </h1>
+                <p>Consider Your search is Over</p>
+                <a
+                  href=""
+                  class="contact-now inquire-contact"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  >Contact Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <style>
+        .product-categories-main-div {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 0;
+        }
+        .product-categories-main-div .arrow-img {
+          width: 2.5rem;
+          cursor: pointer;
+          transition: 0.3s;
+          /*transform: scale(0.93);*/
+          /*opacity: 0.5;*/
+        }
+        .product-categories-main-div .arrow-img:hover {
+          /*opacity: 1;*/
+          transform: scale(1.2);
+        }
+        .category-divs {
+          scroll-behavior: smooth;
+        }
+        @media only screen and (max-width: 400px) {
+          .arrow-img {
+            width: 1.5rem !important;
+          }
+          .category-divs div img {
+            width: 200px;
+            height: 250px;
+          }
+        }
+      </style>
+      <script type="text/javascript"></script>
+      <section class="container" id="categories">
+        <h1 style="color: #2b3467">Product Categories</h1>
+        <div class="product-categories-main-div container">
+          <img class="arrow-img" id="scroll-left" src="images/arrow-left.png" />
+          <div class="category-divs" id="category-divs">
+            <div>
+              <img src="images/shirt.png" alt="" />
+              <h3>Shirts</h3>
+            </div>
+            <div>
+              <img src="images/skirt.png" alt="" />
+              <h3>Skirts</h3>
+            </div>
+
+            <div>
+              <img src="images/frock.png" alt="" />
+              <h3>Frocks</h3>
+            </div>
+
+            <div>
+              <img src="images/pt-tshirt.png" alt="" />
+              <h3>P.T T-Shirts</h3>
+            </div>
+
+            <div>
+              <img src="images/pt-shorts.png" alt="" />
+              <h3>P.T Shorts</h3>
+            </div>
+
+            <div>
+              <img src="images/pt-track-pants.png" alt="" />
+              <h3>P.T Track Pants</h3>
+            </div>
+
+            <div>
+              <img src="images/belt.png" alt="" />
+              <h3>Belts</h3>
+            </div>
+
+            <div>
+              <img src="images/tie.png" alt="" />
+              <h3>Ties</h3>
+            </div>
+
+            <div>
+              <img src="images/logo.png" alt="" />
+              <h3>Logos</h3>
+            </div>
+
+            <div>
+              <img src="images/socks.png" alt="" />
+              <h3>Socks</h3>
+            </div>
+          </div>
+          <img
+            class="arrow-img"
+            id="scroll-right"
+            src="images/arrow-right.png"
+          />
+        </div>
+      </section>
+
+      <section id="gallery">
+        <div
+          class="container py-4"
+          style="display: flex; flex-direction: column; gap: 1rem"
+        >
+          <div>
+            <h1 style="color: #2b3467">Gallery</h1>
+
+            <div class="nav-tabs" id="nav-tab" role="tablist">
+              <button
+                class="active"
+                id="nav-home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-home"
+                type="button"
+                role="tab"
+                aria-controls="nav-home"
+                aria-selected="true"
+              >
+                Boys
+              </button>
+              <button
+                id="nav-profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-profile"
+                type="button"
+                role="tab"
+                aria-controls="nav-profile"
+                aria-selected="false"
+              >
+                Girls
+              </button>
+              <button
+                id="nav-contact-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#nav-contact"
+                type="button"
+                role="tab"
+                aria-controls="nav-contact"
+                aria-selected="false"
+              >
+                Sportswear/Unisex
+              </button>
+            </div>
+          </div>
+          <div class="tab-content" id="nav-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="nav-home"
+              role="tabpanel"
+              aria-labelledby="nav-home-tab"
+              tabindex="0"
+            >
+              <main>
+                <div class="slide-container">
+                  <section class="contain" id="slider">
+                    <a href="images/1.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/1.png" alt=""
+                    /></a>
+                    <a href="images/2.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/2.png" alt=""
+                    /></a>
+                    <a href="images/3.jpg" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/3.jpg" alt=""
+                    /></a>
+                    <a href="images/4.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/4.png" alt=""
+                    /></a>
+                    <a href="images/5.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/5.png" alt=""
+                    /></a>
+                    <a href="images/6.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/6.png" alt=""
+                    /></a>
+                    <a href="images/7.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/7.png" alt=""
+                    /></a>
+                  </section>
+                </div>
+              </main>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="nav-profile"
+              role="tabpanel"
+              aria-labelledby="nav-profile-tab"
+              tabindex="0"
+            >
+              <main>
+                <div class="slide-container">
+                  <section class="contain" id="slider">
+                    <a href="images/8.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/8.png" alt=""
+                    /></a>
+                    <a href="images/9.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/9.png" alt=""
+                    /></a>
+                    <a href="images/10.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/10.png" alt=""
+                    /></a>
+                    <a href="images/11.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/11.png" alt=""
+                    /></a>
+                    <a href="images/12.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/12.png" alt=""
+                    /></a>
+                    <a href="images/13.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/13.png" alt=""
+                    /></a>
+                    <a href="images/14.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/14.png" alt=""
+                    /></a>
+                  </section>
+                </div>
+              </main>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="nav-contact"
+              role="tabpanel"
+              aria-labelledby="nav-contact-tab"
+              tabindex="0"
+            >
+              <main>
+                <div class="slide-container">
+                  <section class="contain" id="slider">
+                    <a href="images/15.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/15.png" alt=""
+                    /></a>
+                    <a href="images/16.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/16.png" alt=""
+                    /></a>
+                    <a href="images/17.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/17.png" alt=""
+                    /></a>
+                    <a href="images/18.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/18.png" alt=""
+                    /></a>
+                    <a href="images/19.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/19.png" alt=""
+                    /></a>
+                    <a href="images/20.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/20.png" alt=""
+                    /></a>
+                    <a href="images/21.png" data-lightbox="mygallery"
+                      ><img class="thumbnail" src="./images/21.png" alt=""
+                    /></a>
+                  </section>
+                </div>
+              </main>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="container d-flex">
+        <img src="images/about.jpg" alt="" />
+        <div>
+          <h2>About Us</h2>
+          <p>
+            Maverick Dresses is your one-stop solution for all your school
+            uniform needs. As leading school uniform suppliers and designers, we
+            are dedicated to providing high-quality, comfortable and fashionable
+            attire for students of all ages. Our collection of school uniforms
+            is designed to meet the needs of every student, while ensuring they
+            look and feel their best at school.
+
+            <br /><br />
+
+            Maverick Dresses is a leading school uniform supplier that
+            specializes in creating innovative designs for each customer. We
+            strive to provide the highest quality uniforms that are both stylish
+            and comfortable. Our team of experienced designers works hard to
+            ensure that each uniform meets the individual needs of our
+            customers. We take pride in our commitment to excellence and
+            customer satisfaction, and we look forward to helping you find the
+            perfect uniform for your school.
+          </p>
+        </div>
+      </section>
+      <section
+        id="testimonial"
+        style="text-align: center; background: #f0f0f0; padding-bottom: 3rem"
+      >
+        <h1
+          style="
+            text-align: center;
+            margin-bottom: 0;
+            padding-top: 2rem;
+            color: #2b3467;
+            background: #f0f0f0;
+          "
+        >
+          What Our Customers Say?
+        </h1>
+        <div class="testimonial">
+          <div class="slide-container swiper">
+            <div class="slide-content">
+              <div class="card-wrapper swiper-wrapper">
+                <div class="card swiper-slide">
+                  <div class="image-content">
+                    <span class="overlay"></span>
+
+                    <div class="card-image">
+                      <img src="images/profile1.jpg" alt="" class="card-img" />
+                    </div>
+                  </div>
+
+                  <div class="card-content">
+                    <h2 class="name">David Dell</h2>
+                    <p class="description">
+                      The lorem text the section that contains header with
+                      having open functionality. Lorem dolor sit amet
+                      consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="card swiper-slide">
+                  <div class="image-content">
+                    <span class="overlay"></span>
+
+                    <div class="card-image">
+                      <img src="images/profile2.jpg" alt="" class="card-img" />
+                    </div>
+                  </div>
+
+                  <div class="card-content">
+                    <h2 class="name">David Dell</h2>
+                    <p class="description">
+                      The lorem text the section that contains header with
+                      having open functionality. Lorem dolor sit amet
+                      consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="card swiper-slide">
+                  <div class="image-content">
+                    <span class="overlay"></span>
+
+                    <div class="card-image">
+                      <img src="images/profile3.jpg" alt="" class="card-img" />
+                    </div>
+                  </div>
+
+                  <div class="card-content">
+                    <h2 class="name">David Dell</h2>
+                    <p class="description">
+                      The lorem text the section that contains header with
+                      having open functionality. Lorem dolor sit amet
+                      consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="card swiper-slide">
+                  <div class="image-content">
+                    <span class="overlay"></span>
+
+                    <div class="card-image">
+                      <img src="images/profile4.jpg" alt="" class="card-img" />
+                    </div>
+                  </div>
+
+                  <div class="card-content">
+                    <h2 class="name">David Dell</h2>
+                    <p class="description">
+                      The lorem text the section that contains header with
+                      having open functionality. Lorem dolor sit amet
+                      consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="card swiper-slide">
+                  <div class="image-content">
+                    <span class="overlay"></span>
+
+                    <div class="card-image">
+                      <img src="images/profile5.jpg" alt="" class="card-img" />
+                    </div>
+                  </div>
+
+                  <div class="card-content">
+                    <h2 class="name">David Dell</h2>
+                    <p class="description">
+                      The lorem text the section that contains header with
+                      having open functionality. Lorem dolor sit amet
+                      consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="card swiper-slide">
+                  <div class="image-content">
+                    <span class="overlay"></span>
+
+                    <div class="card-image">
+                      <img src="images/profile6.jpg" alt="" class="card-img" />
+                    </div>
+                  </div>
+
+                  <div class="card-content">
+                    <h2 class="name">David Dell</h2>
+                    <p class="description">
+                      The lorem text the section that contains header with
+                      having open functionality. Lorem dolor sit amet
+                      consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="card swiper-slide">
+                  <div class="image-content">
+                    <span class="overlay"></span>
+
+                    <div class="card-image">
+                      <img src="images/profile7.jpg" alt="" class="card-img" />
+                    </div>
+                  </div>
+
+                  <div class="card-content">
+                    <h2 class="name">David Dell</h2>
+                    <p class="description">
+                      The lorem text the section that contains header with
+                      having open functionality. Lorem dolor sit amet
+                      consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="card swiper-slide">
+                  <div class="image-content">
+                    <span class="overlay"></span>
+
+                    <div class="card-image">
+                      <img src="images/profile8.jpg" alt="" class="card-img" />
+                    </div>
+                  </div>
+
+                  <div class="card-content">
+                    <h2 class="name">David Dell</h2>
+                    <p class="description">
+                      The lorem text the section that contains header with
+                      having open functionality. Lorem dolor sit amet
+                      consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+                <div class="card swiper-slide">
+                  <div class="image-content">
+                    <span class="overlay"></span>
+
+                    <div class="card-image">
+                      <img src="images/profile9.jpg" alt="" class="card-img" />
+                    </div>
+                  </div>
+
+                  <div class="card-content">
+                    <h2 class="name">David Dell</h2>
+                    <p class="description">
+                      The lorem text the section that contains header with
+                      having open functionality. Lorem dolor sit amet
+                      consectetur adipisicing elit.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+        <div class="feedback-btn-div container" style="padding-top: 1.5rem">
+          <p>
+            Maverick Dresses is the epitome of innovation and creativity when it
+            comes to uniform designing. Their designs are unique, fresh and
+            cater to the individual needs of their customers. A truly
+            exceptional uniform supplier that sets the bar high.
+          </p>
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            id="contact-now"
+            class="feedback-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#feedback"
+          >
+            Submit Feedback
+          </button>
+        </div>
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="feedback"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+          style="text-align: left"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title fs-5" id="staticBackdropLabel">
+                  Your Feedback
+                </h2>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <i class="fa-solid fa-x"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="row g-3 needs-validation" novalidate>
+                  <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label"
+                      >First name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="validationCustom01"
+                      placeholder="Manik"
+                      required
+                    />
+                    <!-- <div class="valid-feedback">
+           Looks good!
+         </div> -->
+                  </div>
+                  <div class="col-md-6">
+                    <label for="validationCustom02" class="form-label"
+                      >Last name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="validationCustom02"
+                      placeholder="Rahuja"
+                      required
+                    />
+                    <!-- <div class="valid-feedback">
+           Looks good!
+         </div> -->
+                  </div>
+                  <div class="col-md-12">
+                    <label for="validationCustomUsername" class="form-label"
+                      >Email</label
+                    >
+                    <div class="input-group has-validation">
+                      <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="validationCustomUsername"
+                        aria-describedby="inputGroupPrepend"
+                        placeholder="manikrahuja4@gmail.com"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Please enter your Email.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="validationTextarea" class="form-label"
+                      >Your Opinion</label
+                    >
+                    <textarea
+                      class="form-control"
+                      rows="5"
+                      id="validationTextarea"
+                      placeholder="Enter Your Opinion About our Services or Anything You Liked/Disliked on our website..."
+                      required
+                    ></textarea>
+                    <div class="invalid-feedback">
+                      Please enter atleast a few words.
+                    </div>
+                  </div>
+
+                  <div class="col-12" style="text-align: end">
+                    <button
+                      type="button"
+                      class="contact-now"
+                      data-bs-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
+                    <button type="submit" class="contact-now">Submit</button>
+                  </div>
+                </form>
+              </div>
+              <!-- <div class="modal-footer">
+   </div> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="container">
+        <h1>Contact Us</h1>
+        <!-- <h3>Reach Us</h3> -->
+        <div class="mapouter">
+          <div class="gmap_canvas">
+            <iframe
+              class="gmap_iframe"
+              width="100%"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0"
+              src="https://maps.google.com/maps?width=350&amp;height=250&amp;hl=en&amp;q=aptech defence hyderabad&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            ></iframe
+            ><a href="https://embed-googlemap.com"
+              >google maps code generator</a
+            >
+          </div>
+        </div>
+        <div class="contact-main">
+          <div class="contact-addresses container">
+            <h5>Office Locations</h5>
+            <div class="contact-addresses-content">
+              <div class="address">
+                <img src="images/usa.png" alt="" />
+                <br />
+                <h6>San Francisco, USA</h6>
+                <small
+                  >1250 Bayhill Drive, Suite 315, <br />
+                  San Bruno, CA 94066 <br />
+                  Office: <a href="#">+1 650 513 0514</a> (Mon-Fri) <br />
+                  Sales/Support:
+                  <a href="#">+1 866 832 3090</a> (Mon-Fri)</small
+                >
+              </div>
+
+              <div class="address">
+                <img src="images/uk.png" alt="" />
+                <br />
+                <h6>London, UK</h6>
+                <small
+                  >54 Frenchurch Street,<br />
+                  London, EC3M 3JY<br />
+                  Office: <a href="#">+44 189 280 5040</a> (Mon-Fri) <br />
+                  Sales/Support:
+                  <a href="#">+44 800 808 5790 </a> (Mon-Fri)</small
+                >
+              </div>
+
+              <div class="address">
+                <img src="images/india.png" alt="" />
+                <br />
+                <h6>Chennai, INDIA</h6>
+                <small
+                  >SP Infocity, Block B<br />
+                  40 MGR Road, Chennai 600 096<br />
+                  Office: <a href="#">+91 44 6667 8080</a> (Mon-Fri) <br />
+                  Sales/Support:
+                  <a href="#">+91 44 6667 8080</a> (Mon-Fri)</small
+                >
+              </div>
+            </div>
+            <!--             <br><br>
+            <p style="text-align: center;" class="container">
+            Reach out to Maverick Dresses for any questions or concerns.<br> Their friendly customer service team is always available to assist you.
+            </p> -->
+            <!-- Button trigger modal -->
+            <button
+              type="button"
+              id="contact-now"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
+              Send Message
+            </button>
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="staticBackdrop"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="staticBackdropLabel">
+                      Message Us
+                    </h2>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <i class="fa-solid fa-x"></i>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="row g-3 needs-validation" novalidate>
+                      <div class="col-md-6">
+                        <label for="validationCustom01" class="form-label"
+                          >First name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="validationCustom01"
+                          placeholder="Manik"
+                          required
+                        />
+                        <!-- <div class="valid-feedback">
+              Looks good!
+            </div> -->
+                      </div>
+                      <div class="col-md-6">
+                        <label for="validationCustom02" class="form-label"
+                          >Last name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="validationCustom02"
+                          placeholder="Rahuja"
+                          required
+                        />
+                        <!-- <div class="valid-feedback">
+              Looks good!
+            </div> -->
+                      </div>
+                      <div class="col-md-12">
+                        <label for="validationCustomUsername" class="form-label"
+                          >Email</label
+                        >
+                        <div class="input-group has-validation">
+                          <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="validationCustomUsername"
+                            aria-describedby="inputGroupPrepend"
+                            placeholder="manikrahuja4@gmail.com"
+                            required
+                          />
+                          <div class="invalid-feedback">
+                            Please enter your Email.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="validationTextarea" class="form-label"
+                          >Your Message</label
+                        >
+                        <textarea
+                          class="form-control"
+                          rows="5"
+                          id="validationTextarea"
+                          placeholder="Enter Your Message Here..."
+                          required
+                        ></textarea>
+                        <div class="invalid-feedback">
+                          Please enter your Message/Query.
+                        </div>
+                      </div>
+
+                      <div class="col-12" style="text-align: end">
+                        <button
+                          type="button"
+                          class="contact-now"
+                          data-bs-dismiss="modal"
+                        >
+                          Cancel
+                        </button>
+                        <button type="submit" class="contact-now">Send</button>
+                      </div>
+                    </form>
+                  </div>
+                  <!-- <div class="modal-footer">
+      </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <link rel="stylesheet" href="css/footer.css" />
+        <div class="container">
+          <div class="row">
+            <div class="footer-col">
+              <h4>company</h4>
+              <ul>
+                <li><a href="#">about us</a></li>
+                <li><a href="#">our services</a></li>
+                <li><a href="#">privacy policy</a></li>
+                <li><a href="#">affiliate program</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>get help</h4>
+              <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">shipping</a></li>
+                <li><a href="#">returns</a></li>
+                <li><a href="#">order status</a></li>
+                <li><a href="#">payment options</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>online shop</h4>
+              <ul>
+                <li><a href="#">Boys Uniforms</a></li>
+                <li><a href="#">Girls Uniforms</a></li>
+                <li><a href="#">Sportswear</a></li>
+                <li><a href="#">Logos</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>follow us</h4>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <small>
+          Copyright &copy; 2023 Maverick Dresses <br />
+          @ManikRahuja
+        </small>
+
+        <a href="#header">
+          <i class="fa-solid fa-angles-up" id="back-top"></i>
+        </a>
+      </footer>
+    </div>
+
+    <marquee id="ct7"></marquee>
+    <script src="js/main.js"></script>
+    <!-- Swiper JS -->
+    <script src="js/swiper-bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="js/swiper.js"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (() => {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+  </body>
+</html>
