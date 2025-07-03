@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SoccerVerse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="border-gray-200 dark:bg-gray-900 fixed w-full" style="z-index: 99;box-shadow: 0 10px 25px #12121294;">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="images/logo.png" class="h-11" alt="SoccerVerse Logo" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SoccerVerse</span>
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700" style="align-items: center;">
+            <li>
+              <a href="#" class="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:hover:text-blue-700" aria-current="page">Home</a>
+            </li>
+            <li>
+              <a href="#game-info" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Game Info</a>
+            </li>
+            <li>
+              <a href="#player-gallery" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Player Galleries</a>
+            </li>
+            <li>
+              <a href="#top-scores-section" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Top Scores</a>
+            </li>
+            <li>
+              <div class="relative">
+                <button id="dropdownButton" class="text-white bg-gray-800 px-4 py-2 rounded-md focus:outline-none">
+                  More
+                </button>
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 dark:bg-gray-800 rounded-md" style="box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);">
+                  <a href="#contact-us" class="block px-4 py-2 text-white hover:bg-white hover:text-gray-900">Feedback</a>
+                  <a href="#contact-us" class="block px-4 py-2 text-white hover:bg-white hover:text-gray-900">Contact Us</a>
+                  <a href="#sitemap" class="block px-4 py-2 text-white hover:bg-white hover:text-gray-900">Sitemap</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero text-white text-center d-flex align-items-center justify-content-center" style="height: 100vh;display: flex;align-items: center;justify-content: center;">
+      <div class="hero-content">
+        <h2 class="display-4 hero-heading">Welcome to SoccerVerse</h2>
+        <p class="lead">Your one-stop destination for all things soccer.</p>
+        <a href="#game-info" class="btn btn-warning btn-lg">Explore Now</a>
+      </div>
+    </section>
+    <!-- Game Info Section -->
+     <style>
+        .match-list img{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+.live-indicator {
+    background-color: #25b14c;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.tab-active {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.match-row {
+    background-color: #0b1433;
+    color: #cdcbcb;
+    cursor: pointer;
+}
+.match-row:hover{
+    background: #101c48;
+}
+.heading-section{
+    font-size: 2.5rem;
+}
+.match-list{
+    display: flex;
+    flex-direction: column;
+    max-width: 80vw;
+    margin: auto;
+    margin-block: 3rem;
+}
+@media only screen and (max-width: 620px) {
+   .heading-section {
+        font-size: 1.8rem;
+    }
+    .px-10{
+        padding-inline: 0 !important;
+    }
+    .match-list{
+    display: flex;
+    flex-direction: column;
+    max-width: 99vw;
+    margin: auto;
+    margin-block: 2rem;
+    }
+    .btnss{
+        margin-inline: 10px;
+    }
+    .btnss button{
+        padding: 5px 10px !important;
+        font-size: 0.9rem;
+    }
+
+}
+
+     </style>
+<section id="game-info" class="bg-gray-900" style="padding-top: 6rem;padding-bottom: 3rem;">
+    <h2 class="text-center text-yellow-500 mb-5 heading-section">Upcoming Matches & Results</h2>
+
+    <!-- Search and Live Indicator -->
+    <div class="flex items-center justify-around gap-3 flex-wrap mb-6 mx-auto px-10">
+        <div class="flex items-center gap-2">
+            <div class="live-indicator"></div>
+            <span class="text-white">Live (7)</span>
+        </div>
+        <div class="flex gap-2">
+            <input id="search-bar" type="text" placeholder="Search for matches" class="px-3 py-1 rounded bg-gray-700 border-none text-white">
+            <button id="search-button" class="bg-gray-600 px-4 py-1 rounded text-white">Search</button>
+        </div>
+    </div>
+
+    <!-- Tab Menu -->
+    <div class="flex justify-center gap-2 mb-6 btnss">
+        <button class="px-3 py-2 rounded bg-gray-700 tab-active" data-tab="today">Today Aug 24</button>
+        <button class="px-3 py-2 rounded bg-gray-700" data-tab="sun">Sun Aug 25</button>
+        <button class="px-3 py-2 rounded bg-gray-700" data-tab="mon">Mon Aug 26</button>
+    </div>
+
+    <!-- Match List Section -->
+    <div id="match-list" class="mb-6 mx-10 match-list">
+        <div class="bg-blue-800 px-4 py-2 rounded-t">
+            <h2 class="text-xl font-semibold text-white">ENGLAND - PREMIER LEAGUE</h2>
+        </div>
+
+<!-- Today's Matches -->
+<div class="tab-content today-content">
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match1">
+        <span>FT</span>
+        <div class="flex items-center gap-2">
+            <span>Brighton</span>
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Brighton_and_Hove_Albion_FC_crest.svg/1200px-Brighton_and_Hove_Albion_FC_crest.svg.png" alt="Brighton logo">
+            <span>2 - 1</span>
+            <img src="https://flagsngadgets.com/cdn/shop/products/Mancester_United_e7267fba-b040-47b5-9b89-172790f7831f_large.png?v=1571438700" alt="Manchester United logo">
+            <span>Manchester United</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match2">
+        <span>45'</span>
+        <div class="flex items-center gap-2">
+            <span>Fulham</span>
+            <img src="https://cdn.freebiesupply.com/logos/large/2x/fulham-fc-1-logo-png-transparent.png" alt="Fulham logo">
+            <span>1 - 1</span>
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Leicester_City_crest.svg/1200px-Leicester_City_crest.svg.png" alt="Leicester logo">
+            <span>Leicester</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match3">
+        <span>20:00</span>
+        <div class="flex items-center gap-2">
+            <span>Everton</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRz8rc75NqlQz0bz2rp4domeStImtQ5vQFZw&s" alt="Everton logo">
+            <span>-</span>
+            <img src="https://i.pinimg.com/originals/72/b4/0c/72b40cddfd9064b59ed19f39d4200a3d.png" alt="Liverpool logo">
+            <span>Liverpool</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match4">
+        <span>HT</span>
+        <div class="flex items-center gap-2">
+            <span>Wolves</span>
+            <img src="https://i.pinimg.com/originals/7a/c2/03/7ac2034930f4e26a7c2ad89a521fa451.png" alt="Wolves logo">
+            <span>0 - 0</span>
+            <img src="https://www.southampton-rt4.org/images/southampton-rt4-roundel.png" alt="Southampton logo">
+            <span>Southampton</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match5">
+        <span>FT</span>
+        <div class="flex items-center gap-2">
+            <span>Chelsea</span>
+            <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/c/cc/Chelsea_FC.svg/2048px-Chelsea_FC.svg.png" alt="Chelsea logo">
+            <span>3 - 0</span>
+            <img src="https://i.redd.it/3z389dlryqj81.png" alt="Arsenal logo">
+            <span>Arsenal</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match6">
+        <span>70'</span>
+        <div class="flex items-center gap-2">
+            <span>Leeds</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGb8IBbFHbbEGP0oHej3SQ1Xi83NiX-33Lw&s" alt="Leeds logo">
+            <span>1 - 1</span>
+            <img src="https://iconape.com/wp-content/files/xo/323688/png/323688.png" alt="Newcastle logo">
+            <span>Newcastle</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match7">
+        <span>21:30</span>
+        <div class="flex items-center gap-2">
+            <span>Aston Villa</span>
+            <img src="https://seeklogo.com/images/A/aston-villa-logo-55377F01BF-seeklogo.com.png" alt="Aston Villa logo">
+            <span>-</span>
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Leicester_City_crest.svg/1200px-Leicester_City_crest.svg.png" alt="Leicester logo">
+            <span>Leicester</span>
+        </div>
+    </div>
+</div>
+
+<!-- Sun Matches -->
+<div class="tab-content sun-content hidden">
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match8">
+        <span>FT</span>
+        <div class="flex items-center gap-2">
+            <span>Aston Villa</span>
+            <img src="https://seeklogo.com/images/A/aston-villa-logo-55377F01BF-seeklogo.com.png" alt="Aston Villa logo">
+            <span>2 - 3</span>
+            <img src="https://i.redd.it/3z389dlryqj81.png" alt="Arsenal logo">
+            <span>Arsenal</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match9">
+        <span>90'</span>
+        <div class="flex items-center gap-2">
+            <span>Liverpool</span>
+            <img src="https://i.pinimg.com/originals/72/b4/0c/72b40cddfd9064b59ed19f39d4200a3d.png" alt="Liverpool logo">
+            <span>4 - 1</span>
+            <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/c/cc/Chelsea_FC.svg/2048px-Chelsea_FC.svg.png" alt="Chelsea logo">
+            <span>Chelsea</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match10">
+        <span>FT</span>
+        <div class="flex items-center gap-2">
+            <span>West Ham</span>
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/942ccb3e-38e5-45d6-964b-53c79a948ea0/dgq95ou-31ec7354-5d6b-468d-b49a-00b60c0e882b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk0MmNjYjNlLTM4ZTUtNDVkNi05NjRiLTUzYzc5YTk0OGVhMFwvZGdxOTVvdS0zMWVjNzM1NC01ZDZiLTQ2OGQtYjQ5YS0wMGI2MGMwZTg4MmIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.VlzVHfZiyY4qyym0c4AJDX-9If2W8XslsztuTRp4DAc" alt="West Ham logo">
+            <span>1 - 0</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwE0cdrzGcX2YOv2y7jEQselWeWNLB-qJIuw&s" alt="Crystal Palace logo">
+            <span>Crystal Palace</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match11">
+        <span>21:00</span>
+        <div class="flex items-center gap-2">
+            <span>Manchester City</span>
+            <img src="https://flagsngadgets.com/cdn/shop/products/Mancester_United_e7267fba-b040-47b5-9b89-172790f7831f_large.png?v=1571438700" alt="Manchester City logo">
+            <span>-</span>
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/942ccb3e-38e5-45d6-964b-53c79a948ea0/dgq92pv-4be96172-d015-403b-908f-0936402d5071.png/v1/fill/w_800,h_800/burnley_fc_logo_round_png_by_nathakorn152009_dgq92pv-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODAwIiwicGF0aCI6IlwvZlwvOTQyY2NiM2UtMzhlNS00NWQ2LTk2NGItNTNjNzlhOTQ4ZWEwXC9kZ3E5MnB2LTRiZTk2MTcyLWQwMTUtNDAzYi05MDhmLTA5MzY0MDJkNTA3MS5wbmciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.NvjdY-C9drOxT9H482H1a7YStuyl4ygAUybSW_YCtOk" alt="Burnley logo">
+            <span>Burnley</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match12">
+        <span>HT</span>
+        <div class="flex items-center gap-2">
+            <span>Tottenham</span>
+            <img src="https://i.pinimg.com/originals/50/43/b2/5043b2a6fb28cc6c2602eeba10a9095f.png" alt="Tottenham logo">
+            <span>2 - 2</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzGb8IBbFHbbEGP0oHej3SQ1Xi83NiX-33Lw&s" alt="Leeds logo">
+            <span>Leeds</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match13">
+        <span>FT</span>
+        <div class="flex items-center gap-2">
+            <span>Leicester</span>
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Leicester_City_crest.svg/1200px-Leicester_City_crest.svg.png" alt="Leicester logo">
+            <span>1 - 3</span>
+            <img src="https://seeklogo.com/images/A/aston-villa-logo-55377F01BF-seeklogo.com.png" alt="Aston Villa logo">
+            <span>Aston Villa</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match14">
+        <span>70'</span>
+        <div class="flex items-center gap-2">
+            <span>Everton</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRz8rc75NqlQz0bz2rp4domeStImtQ5vQFZw&s" alt="Everton logo">
+            <span>2 - 1</span>
+            <img src="https://iconape.com/wp-content/files/xo/323688/png/323688.png" alt="Newcastle logo">
+            <span>Newcastle</span>
+        </div>
+    </div>
+</div>
+
+<!-- Mon Matches -->
+<div class="tab-content mon-content hidden">
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match15">
+        <span>21:00</span>
+        <div class="flex items-center gap-2">
+            <span>Fulham</span>
+            <img src="https://cdn.freebiesupply.com/logos/large/2x/fulham-fc-1-logo-png-transparent.png" alt="Fulham logo">
+            <span>-</span>
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/942ccb3e-38e5-45d6-964b-53c79a948ea0/dgq95ou-31ec7354-5d6b-468d-b49a-00b60c0e882b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk0MmNjYjNlLTM4ZTUtNDVkNi05NjRiLTUzYzc5YTk0OGVhMFwvZGdxOTVvdS0zMWVjNzM1NC01ZDZiLTQ2OGQtYjQ5YS0wMGI2MGMwZTg4MmIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.VlzVHfZiyY4qyym0c4AJDX-9If2W8XslsztuTRp4DAc" alt="West Ham logo">
+            <span>West Ham</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match16">
+        <span>FT</span>
+        <div class="flex items-center gap-2">
+            <span>Brighton</span>
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Brighton_and_Hove_Albion_FC_crest.svg/1200px-Brighton_and_Hove_Albion_FC_crest.svg.png" alt="Brighton logo">
+            <span>0 - 1</span>
+            <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/c/cc/Chelsea_FC.svg/2048px-Chelsea_FC.svg.png" alt="Chelsea logo">
+            <span>Chelsea</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match17">
+        <span>HT</span>
+        <div class="flex items-center gap-2">
+            <span>Burnley</span>
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/942ccb3e-38e5-45d6-964b-53c79a948ea0/dgq92pv-4be96172-d015-403b-908f-0936402d5071.png/v1/fill/w_800,h_800/burnley_fc_logo_round_png_by_nathakorn152009_dgq92pv-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODAwIiwicGF0aCI6IlwvZlwvOTQyY2NiM2UtMzhlNS00NWQ2LTk2NGItNTNjNzlhOTQ4ZWEwXC9kZ3E5MnB2LTRiZTk2MTcyLWQwMTUtNDAzYi05MDhmLTA5MzY0MDJkNTA3MS5wbmciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.NvjdY-C9drOxT9H482H1a7YStuyl4ygAUybSW_YCtOk" alt="Burnley logo">
+            <span>0 - 2</span>
+            <img src="https://flagsngadgets.com/cdn/shop/products/Mancester_United_e7267fba-b040-47b5-9b89-172790f7831f_large.png?v=1571438700" alt="Manchester City logo">
+            <span>Manchester City</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match18">
+        <span>75'</span>
+        <div class="flex items-center gap-2">
+            <span>Southampton</span>
+            <img src="https://www.southampton-rt4.org/images/southampton-rt4-roundel.png" alt="Southampton logo">
+            <span>1 - 2</span>
+            <img src="https://i.pinimg.com/originals/72/b4/0c/72b40cddfd9064b59ed19f39d4200a3d.png" alt="Liverpool logo">
+            <span>Liverpool</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match19">
+        <span>20:45</span>
+        <div class="flex items-center gap-2">
+            <span>Manchester United</span>
+            <img src="https://flagsngadgets.com/cdn/shop/products/Mancester_United_e7267fba-b040-47b5-9b89-172790f7831f_large.png?v=1571438700" alt="Manchester United logo">
+            <span>-</span>
+            <img src="https://i.pinimg.com/originals/50/43/b2/5043b2a6fb28cc6c2602eeba10a9095f.png" alt="Tottenham logo">
+            <span>Tottenham</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match20">
+        <span>FT</span>
+        <div class="flex items-center gap-2">
+            <span>Crystal Palace</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwE0cdrzGcX2YOv2y7jEQselWeWNLB-qJIuw&s" alt="Crystal Palace logo">
+            <span>0 - 0</span>
+            <img src="https://i.pinimg.com/originals/7a/c2/03/7ac2034930f4e26a7c2ad89a521fa451.png" alt="Wolves logo">
+            <span>Wolves</span>
+        </div>
+    </div>
+    <div class="flex items-center justify-between px-4 py-2 match-row" data-match="match21">
+        <span>21:30</span>
+        <div class="flex items-center gap-2">
+            <span>Newcastle</span>
+            <img src="https://iconape.com/wp-content/files/xo/323688/png/323688.png" alt="Newcastle logo">
+            <span>-</span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRz8rc75NqlQz0bz2rp4domeStImtQ5vQFZw&s" alt="Everton logo">
+            <span>Everton</span>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+</section>
+
+<!-- Modal Template -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center hidden z-50" style="z-index: 100;">
+    <div class="p-6 pt-8 rounded-lg shadow-lg w-full max-w-md relative" style="background-color: #0b1433;">
+        <!-- Close Button -->
+        <button id="close-modal" class="absolute top-1 right-2 text-yellow-900 text-lg hover:text-yellow-900 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#EAB308">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <!-- Modal Content -->
+        <div id="modal-content" class="text-center">
+            
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll('[data-tab]');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const searchBar = document.getElementById('search-bar');
+    const searchButton = document.getElementById('search-button');
+
+    // Handle tab switching
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            const targetTab = this.getAttribute('data-tab');
+
+            // Remove active class from all tabs and hide all content
+            tabs.forEach(t => t.classList.remove('tab-active', 'bg-green-500'));
+            tabContents.forEach(content => content.classList.add('hidden'));
+
+            // Add active class to clicked tab and show corresponding content
+            this.classList.add('tab-active', 'bg-green-500');
+            document.querySelector(`.${targetTab}-content`).classList.remove('hidden');
+        });
+    });
+
+    // Handle search functionality
+    searchButton.addEventListener('click', function () {
+        const searchQuery = searchBar.value.toLowerCase();
+        const matches = document.querySelectorAll('.match-row');
+
+        matches.forEach(match => {
+            const teamNames = match.innerText.toLowerCase();
+            if (teamNames.includes(searchQuery)) {
+                match.classList.remove('hidden');
+            } else {
+                match.classList.add('hidden');
+            }
+        });
+    });
+
+    // Optional: Allow search on pressing "Enter"
+    searchBar.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            searchButton.click();
+        }
+    });
+});
+
+</script>
+<section id="player-gallery" class="player-gallery-section bg-gray-800" style="padding-top: 6rem;">
+    <h2 class="text-center text-yellow-500 mb-5 heading-section">Players Gallery</h2>
+    <div class="player-search-filter">
+        <input type="text" class="player-search-input" style="border-radius: 5px;" id="search" placeholder="Search by name..." />
+        <select class="player-team-filter" id="team-filter">
+            <option value="">All Teams</option>
+            <option value="FC Barcelona">FC Barcelona</option>
+            <option value="Manchester United">Manchester United</option>
+            <option value="Liverpool FC">Liverpool FC</option>
+            <!-- Add more teams here -->
+        </select>
+        <button class="player-filter-button" onclick="filterPlayers()">Filter</button>
+    </div>
+    <div class="player-list" id="players-list">
+
+        <!-- Repeat for other players -->
+    </div>
+</section>
+
+
+
+<!-- Modal for Player Details -->
+<div id="player-modal" class="player-modal">
+    <div class="player-modal-content">
+        <span class="player-close-button" onclick="closePlayerModal()">&times;</span>
+        <div class="player-image-container">
+            <img class="player-modal-image" id="player-image" src="" alt="Player Image" />
+        </div>
+        <h2 class="player-modal-name text-white" id="player-name"></h2>
+        <p class="player-modal-biography" id="player-biography"></p>
+        <h3 style="color: white;font-size: larger;font-weight: 700;">Statistics</h3>
+        <p class="player-modal-stats" id="player-stats" style="align-self: baseline;"></p>
+        <p class="player-modal-team" id="player-team" style="align-self: baseline;"></p>
+        <p class="player-modal-position" id="player-position" style="align-self: baseline;"></p>
+    </div>
+</div>
+
+<section id="top-scores-section" class="bg-gray-900 text-white py-8" style="padding-top: 6rem;">
+    <div class="container mx-auto px-4">
+        <h2 class="text-center text-yellow-500 mb-5 heading-section">Top Scores</h2>
+
+<!-- Search Bar -->
+<div class="mb-4 flex justify-center">
+    <input type="text" id="search-barr" placeholder="Search by player or team..." class="w-full max-w-lg p-3 rounded-lg text-black">
+</div>
+
+<!-- Sorting and Filtering -->
+<div class="flex justify-between mb-6 max-w-2xl mx-auto">
+    <div>
+        <select id="sort-options" class="p-3 rounded-lg text-black">
+            <option value="goals">Sort by Goals</option>
+            <option value="points">Sort by Points</option>
+            <option value="name">Sort by Name</option>
+        </select>
+    </div>
+    <div>
+        <select id="filter-options" class="p-3 rounded-lg text-black">
+            <option value="all">All Leagues</option>
+            <option value="premier-league">Premier League</option>
+            <option value="la-liga">La Liga</option>
+            <option value="bundesliga">Bundesliga</option>
+            <option value="serie-a">Serie A</option>
+        </select>
+    </div>
+</div>
+
+
+        <!-- Top 10 Scores List -->
+        <div id="top-scores" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic content will be loaded here -->
+        </div>
+    </div>
+</section>
+
+
+<section id="contact-us" class="bg-gray-900 text-white py-8" style="padding-top: 6rem;">
+    <div class="container mx-auto px-4">
+        <h2 class="text-center text-yellow-500 mb-8 text-3xl font-bold">Contact Us</h2>
+        <div class="flex flex-col md:flex-row justify-between gap-8">
+          <!-- Contact Information -->
+<div class="w-full md:w-1/2 bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700">
+    <h3 class="text-3xl font-bold mb-6 text-yellow-500">Our Address</h3>
+    <p class="text-gray-300 mb-4">
+        <strong class="text-gray-100">SoccerVerse</strong><br>
+        123 Soccer Street,<br>
+        Football City, FC 45678,<br>
+        Countryland
+    </p>
+    <div class="mb-4">
+        <p class="text-gray-300 mb-1"><strong class="text-gray-100">Phone:</strong></p>
+        <p class="text-gray-400 text-lg">+123 456 7890</p>
+    </div>
+    <div class="mb-4">
+        <p class="text-gray-300 mb-1"><strong class="text-gray-100">Email:</strong></p>
+        <p class="text-gray-400 text-lg">contact@soccerverse.com</p>
+    </div>
+    <div>
+        <p class="text-gray-300 mb-1"><strong class="text-gray-100">Hours:</strong></p>
+        <p class="text-gray-400 text-lg">Mon - Fri, 9:00 AM - 6:00 PM</p>
+    </div>
+</div>
+
+<!-- Feedback Form -->
+<div class="w-full md:w-1/2 bg-gray-800 p-6 rounded-lg shadow-lg">
+    <h3 class="text-2xl font-semibold mb-4">Send Us Your Feedback</h3>
+    <form id="feedback-form" action="#" method="POST">
+        <div class="mb-4">
+            <label for="name" class="block text-gray-300 mb-1">Name</label>
+            <input type="text" id="name" name="name"
+                class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            <p id="name-error" class="text-red-500 text-sm hidden">Name is required.</p>
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block text-gray-300 mb-1">Email</label>
+            <input type="email" id="email" name="email"
+                class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            <p id="email-error" class="text-red-500 text-sm hidden">Please enter a valid email address.</p>
+        </div>
+        <div class="mb-4">
+            <label for="message" class="block text-gray-300 mb-1">Message</label>
+            <textarea id="feedback" name="message" rows="4"
+                class="w-full p-3 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+            <p id="feedback-error" class="text-red-500 text-sm hidden">Feedback message is required.</p>
+        </div>
+        <button type="submit"
+            class="w-full py-3 bg-yellow-500 text-gray-900 font-semibold rounded-lg shadow-md hover:bg-yellow-600 transition-colors duration-200">
+            Send Feedback
+        </button>
+    </form>
+</div>
+
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Sitemap Section -->
+<div id="sitemap" class="bg-gray-800 text-white py-12" style="padding-top: 6rem;">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-yellow-500 text-center">Sitemap</h2>
+        <div class="max-w-screen-lg mx-auto">
+            <div class="flex flex-col md:flex-row lg:flex-wrap justify-between gap-8">
+                <!-- Main Pages -->
+                <div class="w-full md:w-1/2 lg:w-1/3">
+                    <h3 class="text-xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2">Main Pages</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="hover:text-yellow-400 transition-colors">Home</a></li>
+                        <li><a href="#game-info" class="hover:text-yellow-400 transition-colors">Game Info</a></li>
+                        <li><a href="#player-gallery" class="hover:text-yellow-400 transition-colors">Player Galleries</a></li>
+                        <li><a href="#top-scores-section" class="hover:text-yellow-400 transition-colors">Top Scores</a></li>
+                    </ul>
+                </div>
+                <!-- Additional Sections -->
+                <div class="w-full md:w-1/2 lg:w-1/3">
+                    <h3 class="text-xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2">Additional Sections</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#contact-us" class="hover:text-yellow-400 transition-colors">Feedback</a></li>
+                        <li><a href="#contact-us" class="hover:text-yellow-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- Legal & Policies -->
+                <div class="w-full lg:w-1/3">
+                    <h3 class="text-xl font-semibold mb-6 border-b-2 border-yellow-500 pb-2">Legal & Policies</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#terms-of-service" class="hover:text-yellow-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="#privacy-policy" class="hover:text-yellow-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#cookie-policy" class="hover:text-yellow-400 transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+  
+
+
+<!-- Footer Section -->
+<footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="flex flex-col md:flex-row justify-between gap-8">
+        <!-- About Us -->
+        <div class="w-full md:w-1/3">
+          <h3 class="text-2xl font-semibold mb-4 text-yellow-400">About SoccerVerse</h3>
+          <p class="mb-4 text-gray-400 leading-relaxed">
+            SoccerVerse is your premier destination for soccer enthusiasts. We provide comprehensive game information, player galleries, and up-to-date scores to keep you in the loop with everything football.
+          </p>
+          <p class="text-gray-500">&copy; 2024 SoccerVerse. All rights reserved.</p>
+        </div>
+        <!-- Quick Links -->
+        <div class="w-full md:w-1/3">
+          <h3 class="text-2xl font-semibold mb-4 text-yellow-400">Quick Links</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-yellow-300 transition-colors">Home</a></li>
+            <li><a href="#game-info" class="hover:text-yellow-300 transition-colors">Game Info</a></li>
+            <li><a href="#player-gallery" class="hover:text-yellow-300 transition-colors">Player Galleries</a></li>
+            <li><a href="#top-scores-section" class="hover:text-yellow-300 transition-colors">Top Scores</a></li>
+            <li><a href="#contact-us" class="hover:text-yellow-300 transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+        <!-- Contact Information -->
+        <div class="w-full md:w-1/3">
+          <h3 class="text-2xl font-semibold mb-4 text-yellow-400">Contact Us</h3>
+          <p class="text-gray-400 mb-2">
+            <strong class="text-gray-300">Address:</strong> SoccerVerse, 123 Soccer Street, Football City, FC 45678, Countryland
+          </p>
+          <p class="text-gray-400 mb-2">
+            <strong class="text-gray-300">Phone:</strong> +123 456 7890
+          </p>
+          <p class="text-gray-400 mb-2">
+            <strong class="text-gray-300">Email:</strong> <a href="mailto:contact@soccerverse.com" class="hover:text-yellow-300 transition-colors">contact@soccerverse.com</a>
+          </p>
+          <p class="text-gray-400">
+            <strong class="text-gray-300">Hours:</strong> Mon - Fri, 9:00 AM - 6:00 PM
+          </p>
+        </div>
+      </div>
+      <div class="mt-12 text-center text-gray-400">
+        <p>Designed with passion by SoccerVerse Team</p>
+      </div>
+    </div>
+  </footer>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+<!-- Include FontAwesome for social media icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.getElementById('feedback-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form from submitting
+
+        // Validation logic
+        let isValid = true;
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const feedback = document.getElementById('feedback').value.trim();
+
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const feedbackError = document.getElementById('feedback-error');
+
+        // Name Validation
+        if (name === '') {
+            nameError.classList.remove('hidden');
+            isValid = false;
+        } else {
+            nameError.classList.add('hidden');
+        }
+
+        // Email Validation
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (email === '' || !emailPattern.test(email)) {
+            emailError.classList.remove('hidden');
+            isValid = false;
+        } else {
+            emailError.classList.add('hidden');
+        }
+
+        // Feedback Validation
+        if (feedback === '') {
+            feedbackError.classList.remove('hidden');
+            isValid = false;
+        } else {
+            feedbackError.classList.add('hidden');
+        }
+
+        // If all fields are valid, submit the form (you can replace this with an AJAX request)
+        if (isValid) {
+            alert('Feedback submitted successfully!');
+            // Perform form submission or AJAX request here
+        }
+    });
+</script>
+
+
+<script>
+const topScores = [
+    { name: 'Erling Haaland', team: 'Manchester City', goals: 29, points: 58, league: 'premier-league' },
+    { name: 'Robert Lewandowski', team: 'Barcelona', goals: 27, points: 54, league: 'la-liga' },
+    { name: 'Kylian Mbappe', team: 'PSG', goals: 25, points: 50, league: 'ligue-1' },
+    { name: 'Karim Benzema', team: 'Al-Ittihad', goals: 24, points: 48, league: 'saudi-pro-league' },
+    { name: 'Harry Kane', team: 'Bayern Munich', goals: 26, points: 52, league: 'bundesliga' },
+    { name: 'Cristiano Ronaldo', team: 'Al-Nassr', goals: 22, points: 44, league: 'saudi-pro-league' },
+    { name: 'Mohamed Salah', team: 'Liverpool', goals: 21, points: 42, league: 'premier-league' },
+    { name: 'Lautaro Martinez', team: 'Inter Milan', goals: 23, points: 46, league: 'serie-a' },
+    { name: 'Victor Osimhen', team: 'Napoli', goals: 24, points: 48, league: 'serie-a' },
+    { name: 'Lionel Messi', team: 'Inter Miami', goals: 20, points: 40, league: 'mls' }
+];
+
+
+function renderTopScores(data) {
+    const container = document.getElementById('top-scores');
+    container.innerHTML = ''; // Clear previous content
+
+    data.forEach((player, index) => {
+        const card = `
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-between hover:bg-gray-700 transition-colors duration-200">
+                <div class="flex items-center gap-4">
+                    <img src="images/${player.name.replace(/\s/g, '-').toLowerCase()}-logo.png" alt="${player.team} logo" class="w-20 h-20">
+                    <div>
+                        <h3 class="text-xl font-semibold">${index + 1}. ${player.name}</h3>
+                        <p class="text-gray-400">Team: ${player.team}</p>
+                        <p class="text-gray-400">Goals: ${player.goals}</p>
+                    </div>
+                </div>
+                <div class="text-2xl font-bold">
+                    ${player.points} pts
+                </div>
+            </div>
+        `;
+        container.innerHTML += card;
+    });
+}
+
+// Initial render
+renderTopScores(topScores);
+
+// Implement sorting and filtering
+document.getElementById('sort-options').addEventListener('change', function () {
+    const sortBy = this.value;
+    const sortedData = [...topScores].sort((a, b) => b[sortBy] - a[sortBy]);
+    renderTopScores(sortedData);
+});
+
+document.getElementById('filter-options').addEventListener('change', function () {
+    const filterBy = this.value;
+    const filteredData = filterBy === 'all' ? topScores : topScores.filter(player => player.league === filterBy);
+    renderTopScores(filteredData);
+});
+document.getElementById('search-barr').addEventListener('input', function () {
+    const query = this.value.toLowerCase().trim();
+    console.log("Search query:", query); // Log the search query
+
+    const searchedData = topScores.filter(player => {
+        const playerName = player.name.toLowerCase();
+        const playerTeam = player.team.toLowerCase();
+        console.log("Checking player:", playerName, "team:", playerTeam); // Log each player's name and team
+
+        return playerName.includes(query) || playerTeam.includes(query);
+    });
+
+    console.log("Search results:", searchedData); // Log the filtered results
+    renderTopScores(searchedData);
+});
+
+
+
+</script>
+
+<script>
+const players = [
+    {
+        name: "Lionel Messi",
+        team: "FC Barcelona",
+        position: "Forward",
+        stats: "Goals: 672, Assists: 268",
+        biography: "Lionel Messi is widely regarded as one of the greatest football players of all time. He has won multiple Ballon d'Or awards and is known for his incredible dribbling, vision, and scoring ability.",
+        image: "https://media.newyorker.com/photos/64bc4330ef09d4a0e04cb249/1:1/w_1707,h_1707,c_limit/Rosen-Messi-Miami.jpg" // Replace with the correct image path
+    },
+    {
+        name: "Cristiano Ronaldo",
+        team: "Manchester United",
+        position: "Forward",
+        stats: "Goals: 674, Assists: 229",
+        biography: "Cristiano Ronaldo is another player often mentioned in the debate for the greatest of all time. Known for his athleticism, finishing skills, and work ethics, he has achieved tremendous success in multiple leagues.",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb-NGEQDekk2BwsllLjk4tcIM_BPIzXECdsg&s" // Replace with the correct image path
+    },
+    {
+        name: "Mohamed Salah",
+        team: "Liverpool FC",
+        position: "Forward",
+        stats: "Goals: 127, Assists: 45",
+        biography: "Mohamed Salah is known for his pace, dribbling, and goal-scoring ability. Since joining Liverpool, he has been a key player, helping the team to win multiple titles.",
+        image: "https://www.aljazeera.com/wp-content/uploads/2023/06/2023-03-24T200228Z_1557826189_UP1EJ3O1JO2F9_RTRMADP_3_SOCCER-AFRICA-EGY-MWI-1686811721.jpg?resize=1800%2C1800" // Replace with the correct image path
+    },
+    {
+        name: "Gerard Piqué",
+        team: "FC Barcelona",
+        position: "Defender",
+        stats: "Goals: 53, Assists: 25",
+        biography: "Gerard Piqué is a central defender known for his strong aerial ability and passing skills. He has been vital in Barcelona's defense and has won numerous trophies.",
+        image: "https://akns-images.eonline.com/eol_images/Entire_Site/2022103/rs_1200x1200-221103124258-1200-Gerard-Pique-LT-11322-GettyImages-1418987242.jpg?fit=around%7C1200:1200&output-quality=90&crop=1200:1200;center,top" // Replace with the correct image path
+    },
+    {
+        name: "Bruno Fernandes",
+        team: "Manchester United",
+        position: "Midfielder",
+        stats: "Goals: 39, Assists: 25",
+        biography: "Bruno Fernandes has revolutionized Manchester United's midfield with his creativity, passing, and goal-scoring capabilities. He is known for his leadership on the pitch.",
+        image: "https://i2-prod.manchestereveningnews.co.uk/sport/football/article28719405.ece/ALTERNATES/s1200c/0_GettyImages-2035634129jpgin.jpg" // Replace with the correct image path
+    },
+    {
+        name: "Sadio Mané",
+        team: "Liverpool FC",
+        position: "Forward",
+        stats: "Goals: 120, Assists: 47",
+        biography: "Sadio Mané is known for his explosive speed and finishing. He has been an instrumental part of Liverpool's attack and has helped the team secure various titles.",
+        image: "https://www.si.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTg5ODAyODQ0MTY4MTM2Mzgw/sadio-mane.jpg" // Replace with the correct image path
+    }
+];
+
+
+function displayPlayers(playersToDisplay) {
+    const playersList = document.getElementById('players-list');
+    playersList.innerHTML = ''; // Clear previous players
+
+    playersToDisplay.forEach(player => {
+        const card = document.createElement('div');
+        card.className = 'player-card';
+        card.innerHTML = `<h3 style="padding-left: 12px;padding-block:5px;">${player.name}</h3><img src="${player.image}" alt="${player.name}" /><p>${player.team}</p>`;
+        card.onclick = () => showPlayerDetails(player);
+        playersList.appendChild(card);
+    });
+}
+
+function filterPlayers() {
+    const searchValue = document.getElementById('search').value.toLowerCase();
+    const teamValue = document.getElementById('team-filter').value;
+
+    const filteredPlayers = players.filter(player => {
+        return player.name.toLowerCase().includes(searchValue) &&
+               (teamValue === "" || player.team === teamValue);
+    });
+    
+    displayPlayers(filteredPlayers);
+}
+
+function showPlayerDetails(player) {
+    document.getElementById('player-name').innerText = player.name;
+    document.getElementById('player-team').innerText = `Team: ${player.team}`;
+    document.getElementById('player-position').innerText = `Position: ${player.position}`;
+    document.getElementById('player-stats').innerText = `Statistics: ${player.stats}`;
+    document.getElementById('player-biography').innerText = `Biography: ${player.biography}`;
+    document.getElementById('player-image').src = player.image;
+    document.getElementById('player-modal').style.display = "block";
+}
+
+function closePlayerModal() {
+    document.getElementById('player-modal').style.display = "none";
+}
+
+// Initial display of players
+displayPlayers(players);
+
+</script>
+<script>
+    // JavaScript for Tab Navigation
+    document.querySelectorAll('.tab-link').forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('.tab-link').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+
+            button.classList.add('active');
+            document.querySelector(`.${button.dataset.day}-content`).classList.remove('hidden');
+        });
+    });
+
+    // JavaScript for Modal
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('close-modal');
+    const modalContent = document.getElementById('modal-content');
+
+    const matchDetails = {
+    match1: {
+        time: 'FT',
+        teams: 'Brighton vs Manchester United',
+        score: '2 - 1',
+        location: 'Amex Stadium',
+        referee: 'Stuart Attwell',
+        details: 'Brighton secured a 2-1 victory against Manchester United.'
+    },
+    match2: {
+        time: '45\'',
+        teams: 'Fulham vs Leicester',
+        score: '1 - 1',
+        location: 'Craven Cottage',
+        referee: 'Andre Marriner',
+        details: 'The match is currently tied at 1-1 as it heads into half time.'
+    },
+    match3: {
+        time: '20:00',
+        teams: 'Everton vs Liverpool',
+        score: '-',
+        location: 'Goodison Park',
+        referee: 'Mike Dean',
+        details: 'Everton is set to face Liverpool later today.'
+    },
+    match4: {
+        time: 'HT',
+        teams: 'Wolves vs Southampton',
+        score: '0 - 0',
+        location: 'Molineux Stadium',
+        referee: 'Anthony Taylor',
+        details: 'Wolves and Southampton are level at 0-0 at half time.'
+    },
+    match5: {
+        time: 'FT',
+        teams: 'Chelsea vs Arsenal',
+        score: '3 - 0',
+        location: 'Stamford Bridge',
+        referee: 'Martin Atkinson',
+        details: 'Chelsea delivered a solid performance with a 3-0 win over Arsenal.'
+    },
+    match6: {
+        time: '70\'',
+        teams: 'Leeds vs Newcastle',
+        score: '1 - 1',
+        location: 'Elland Road',
+        referee: 'Chris Kavanagh',
+        details: 'Leeds and Newcastle are battling it out, currently tied at 1-1.'
+    },
+    match7: {
+        time: '21:30',
+        teams: 'Aston Villa vs Leicester',
+        score: '-',
+        location: 'Villa Park',
+        referee: 'Paul Tierney',
+        details: 'Aston Villa will take on Leicester in a late match today.'
+    },
+    match8: {
+        time: 'FT',
+        teams: 'Aston Villa vs Arsenal',
+        score: '2 - 3',
+        location: 'Villa Park',
+        referee: 'Stuart Attwell',
+        details: 'A thrilling match ended with Arsenal beating Aston Villa 3-2.'
+    },
+    match9: {
+        time: '90\'',
+        teams: 'Liverpool vs Chelsea',
+        score: '4 - 1',
+        location: 'Anfield',
+        referee: 'Anthony Taylor',
+        details: 'Liverpool dominated Chelsea with a 4-1 victory.'
+    },
+    match10: {
+        time: 'FT',
+        teams: 'West Ham vs Crystal Palace',
+        score: '1 - 0',
+        location: 'London Stadium',
+        referee: 'Michael Oliver',
+        details: 'West Ham edged past Crystal Palace with a narrow 1-0 win.'
+    },
+    match11: {
+        time: '21:00',
+        teams: 'Manchester City vs Burnley',
+        score: '-',
+        location: 'Etihad Stadium',
+        referee: 'Martin Atkinson',
+        details: 'Manchester City will host Burnley later this evening.'
+    },
+    match12: {
+        time: 'HT',
+        teams: 'Tottenham vs Leeds',
+        score: '2 - 2',
+        location: 'Tottenham Hotspur Stadium',
+        referee: 'Paul Tierney',
+        details: 'Tottenham and Leeds are locked at 2-2 at the break.'
+    },
+    match13: {
+        time: 'FT',
+        teams: 'Leicester vs Aston Villa',
+        score: '1 - 3',
+        location: 'King Power Stadium',
+        referee: 'Chris Kavanagh',
+        details: 'Aston Villa secured a convincing 3-1 win over Leicester.'
+    },
+    match14: {
+        time: '70\'',
+        teams: 'Everton vs Newcastle',
+        score: '2 - 1',
+        location: 'Goodison Park',
+        referee: 'Anthony Taylor',
+        details: 'Everton leads Newcastle 2-1 as the match heads into the final 20 minutes.'
+    },
+    match15: {
+        time: '21:00',
+        teams: 'Fulham vs West Ham',
+        score: '-',
+        location: 'Craven Cottage',
+        referee: 'Kevin Friend',
+        details: 'Fulham will face West Ham in an evening match.'
+    },
+    match16: {
+        time: 'FT',
+        teams: 'Brighton vs Chelsea',
+        score: '0 - 1',
+        location: 'Amex Stadium',
+        referee: 'Mike Dean',
+        details: 'Chelsea defeated Brighton by a single goal.'
+    },
+    match17: {
+        time: 'HT',
+        teams: 'Leicester vs Tottenham',
+        score: '1 - 1',
+        location: 'King Power Stadium',
+        referee: 'Martin Atkinson',
+        details: 'Leicester and Tottenham are tied at 1-1 at the half.'
+    },
+    match18: {
+        time: 'FT',
+        teams: 'Arsenal vs Southampton',
+        score: '2 - 1',
+        location: 'Emirates Stadium',
+        referee: 'Michael Oliver',
+        details: 'Arsenal came out on top with a 2-1 win over Southampton.'
+    },
+    match19: {
+        time: '45\'',
+        teams: 'Wolves vs Leeds',
+        score: '1 - 0',
+        location: 'Molineux Stadium',
+        referee: 'Chris Kavanagh',
+        details: 'Wolves lead Leeds 1-0 as the teams go into the break.'
+    },
+    match20: {
+        time: 'FT',
+        teams: 'Newcastle vs Aston Villa',
+        score: '3 - 2',
+        location: 'St James\' Park',
+        referee: 'Paul Tierney',
+        details: 'Newcastle secured a thrilling 3-2 victory over Aston Villa.'
+    },
+    match21: {
+        time: '20:30',
+        teams: 'Manchester United vs Liverpool',
+        score: '-',
+        location: 'Old Trafford',
+        referee: 'Martin Atkinson',
+        details: 'A blockbuster clash awaits as Manchester United faces Liverpool.'
+    }
+};
+
+
+    document.querySelectorAll('.match-row').forEach(row => {
+        row.addEventListener('click', () => {
+            const matchId = row.dataset.match;
+            const details = matchDetails[matchId];
+
+            modalContent.innerHTML = `
+    <div class="text-center text-white">
+        <h2 class="text-3xl font-bold mb-6 p-4 rounded-lg shadow-lg" style="background-color: #141458;">${details.teams}</h2>
+        <div class="p-6 rounded-lg shadow-lg mb-6" style="background-color: #121e70;"">
+            <p class="text-lg font-semibold mb-2"><strong>Time:</strong> ${details.time}</p>
+            <p class="text-lg font-semibold mb-2"><strong>Score:</strong> ${details.score}</p>
+            <p class="text-lg font-semibold mb-2"><strong>Location:</strong> ${details.location}</p>
+            <p class="text-lg font-semibold mb-2"><strong>Referee:</strong> ${details.referee}</p>
+        </div>
+        <div class="p-6 rounded-lg shadow-lg" style="background-color: #141458;">
+            <p class="text-lg font-semibold mb-2"><strong>Details:</strong></p>
+            <p class="text-gray-300">${details.details}</p>
+        </div>
+    </div>
+`;
+
+
+
+            modal.classList.remove('hidden');
+        });
+    });
+
+    closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+</script>
+
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const dropdownButton = document.getElementById('dropdownButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        dropdownButton.addEventListener('click', () => {
+          dropdownMenu.classList.toggle('hidden');
+        });
+
+        window.addEventListener('click', (e) => {
+          if (!dropdownButton.contains(e.target)) {
+            dropdownMenu.classList.add('hidden');
+          }
+        });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  </body>
+</html>
