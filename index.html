@@ -13,7 +13,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
     <style>
       html {
         scroll-behavior: smooth;
@@ -21,15 +20,11 @@
     </style>
   </head>
   <body class="bg-white text-gray-800">
-    <!-- Navbar -->
-    <nav class="">
-      <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 md:pt-8 px-4"
-      >
+    <nav>
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 md:pt-8 px-4">
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="./assets/images/logo.png" class="h-10" alt="Logo" />
         </a>
-        <!-- Say Hello Button -->
         <button
           onclick="toggleModal()"
           class="border-2 border-[#AA96DD] text-[#9070e2] font-medium md:font-semibold rounded-full py-1 px-3 md:px-4 md:py-2 hover:bg-[#AA96DD] hover:text-white transition hover:shadow-xl"
@@ -39,80 +34,39 @@
       </div>
     </nav>
 
-    <section
-      class="w-full max-w-screen min-h-screen md:pt-36 flex items-center justify-center flex-col text-center px-4 relative"
-    >
-      <h1 class="text-3xl md:text-5xl font-bold mb-4">
-        Designer, Frontend Developer & Mentor
-      </h1>
+    <section class="w-full max-w-screen min-h-screen md:pt-36 flex items-center justify-center flex-col text-center px-4 relative">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">Designer, Frontend Developer & Mentor</h1>
       <p class="text-base md:text-lg text-gray-600 max-w-xl mb-5">
         I design and code beautifully simple things, and I love what I do.
       </p>
       <a href="./assets/Kamran Khan - Hyderabad.pdf" class="border-2 border-[#AA96DD] text-[#9070e2] font-medium md:font-semibold rounded-full py-1 px-3 md:px-4 md:py-2 hover:bg-[#AA96DD] hover:text-white transition hover:shadow-xl mb-9">Download Resume</a>
-      <img
-        src="./assets/images/kk-avatar.svg"
-        alt="Avatar"
-        class="w-52 h-auto mb-16 md:mb-96"
-      />
-      <img
-        src="./assets/images/hero-section.svg"
-        alt="Hero Image"
-        class="w-[90%] md:w-[50%] h-auto absolute bottom-0"
-      />
+      <img src="./assets/images/kk-avatar.svg" alt="Avatar" class="w-52 h-auto mb-16 md:mb-96" />
+      <img src="./assets/images/hero-section.svg" alt="Hero Image" class="w-[90%] md:w-[50%] h-auto absolute bottom-0" />
     </section>
 
-    <!-- Section 1 -->
     <section class="bg-[#AA96DD] py-24 px-4 text-center md:py-44">
-      <h1 class="text-white text-3xl md:text-4xl font-bold mb-4">
-        Hi, I’m Kamran. Nice to meet you.
-      </h1>
+      <h1 class="text-white text-3xl md:text-4xl font-bold mb-4">Hi, I’m Kamran. Nice to meet you.</h1>
       <p class="text-white max-w-xl mx-auto">
-        My journey as a developer began during my time at Aptech, where I built
-        a strong foundation in programming and design. Along the way, I’ve
-        participated in competitions, earned awards, and created projects that
-        reflect my passion for building user-friendly digital experiences. I'm a
-        curious learner, always improving my skills, and excited to keep growing
-        in this field.
+        My journey as a developer began during my time at Aptech, where I built a strong foundation in programming and design. Along the way, I’ve participated in competitions, earned awards, and created projects that reflect my passion for building user-friendly digital experiences. I'm a curious learner, always improving my skills, and excited to keep growing in this field.
       </p>
     </section>
 
-    <!-- Section 2: Cards Overlapping -->
     <section class="-mt-20 px-4 pb-24 relative z-10">
       <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Designer Card -->
-        <div
-          class="bg-white shadow-xl rounded-2xl p-8 transition hover:shadow-2xl"
-        >
-          <!-- Icon -->
+        <div class="bg-white shadow-xl rounded-2xl p-8 transition hover:shadow-2xl">
           <div class="flex justify-center mb-6">
-            <div
-              class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center"
-            >
-              <svg
-                class="w-7 h-7 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512"
-                fill="currentColor"
-              >
-                <path
-                  d="M480 24c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 40-40 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l40 0 0 40c0 8.8 7.2 16 16 16s16-7.2 16-16l0-40 40 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-40 0 0-40zM288 128c-7.5 0-15 1.6-21.8 4.7L48.8 230.1C38.6 234.7 32 244.8 32 256s6.6 21.3 16.8 25.9l217.4 97.5c6.9 3.1 14.3 4.7 21.8 4.7s15-1.6 21.8-4.7l217.4-97.5c10.2-4.6 16.8-14.7 16.8-25.9s-6.6-21.3-16.8-25.9L309.8 132.7c-6.9-3.1-14.3-4.7-21.8-4.7zm-8.8 33.9c2.8-1.2 5.7-1.9 8.8-1.9s6 .6 8.8 1.9l210 94.1-210 94.1c-2.8 1.2-5.7 1.9-8.8 1.9s-6-.6-8.8-1.9L69.3 256l210-94.1zM94.7 337.5L48.8 358.1C38.6 362.7 32 372.8 32 384s6.6 21.3 16.8 25.9l217.4 97.5c6.9 3.1 14.3 4.7 21.8 4.7s15-1.6 21.8-4.7l217.4-97.5c10.2-4.6 16.8-14.7 16.8-25.9s-6.6-21.3-16.8-25.9l-45.9-20.6-39.1 17.5L506.7 384l-210 94.1c-2.8 1.2-5.7 1.9-8.8 1.9s-6-.6-8.8-1.9L69.3 384l64.5-28.9L94.7 337.5z"
-                />
+            <div class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center">
+              <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor">
+                <path d="..." />
               </svg>
             </div>
           </div>
-
-          <!-- Content -->
-          <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">
-            Designer
-          </h2>
+          <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">Designer</h2>
           <p class="text-gray-600 text-center mb-6">
-            I value simple content structure, clean design, and meaningful
-            visual communication.
+            I value simple content structure, clean design, and meaningful visual communication.
           </p>
           <div class="mb-4">
-            <h3 class="font-semibold text-gray-800">
-              Things I enjoy designing:
-            </h3>
+            <h3 class="font-semibold text-gray-800">Things I enjoy designing:</h3>
             <p class="text-gray-600">UX, UI, Web, Apps, Logos</p>
           </div>
           <div>
@@ -126,35 +80,17 @@
           </div>
         </div>
 
-        <!-- Developer Card -->
-        <div
-          class="bg-white shadow-xl rounded-2xl p-8 transition hover:shadow-2xl"
-        >
-          <!-- Icon -->
+        <div class="bg-white shadow-xl rounded-2xl p-8 transition hover:shadow-2xl">
           <div class="flex justify-center mb-6">
-            <div
-              class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center"
-            >
-              <svg
-                class="w-7 h-7 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M384 64c17.7 0 32 14.3 32 32v320c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32h320zm0-32H64C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zM83.9 149.6c-5.8 6.7-5 16.8 1.7 22.6L183.4 256 85.6 339.9c-6.7 5.8-7.5 15.8-1.7 22.6s15.9 7.5 22.6 1.7l112-96c3.5-3 5.6-7.5 5.6-12.1s-2-9.1-5.6-12.1l-112-96c-6.7-5.8-16.8-5-22.6 1.7zM208 352c-8.8 0-16 7.2-16 16s7.2 16 16 16h160c8.8 0 16-7.2 16-16s-7.2-16-16-16H208z"
-                />
+            <div class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center">
+              <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="..." />
               </svg>
             </div>
           </div>
-
-          <!-- Content -->
-          <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">
-            Frontend Developer
-          </h2>
+          <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">Frontend Developer</h2>
           <p class="text-gray-600 text-center mb-6">
-            I enjoy turning ideas into real, interactive websites with clean and
-            efficient code.
+            I enjoy turning ideas into real, interactive websites with clean and efficient code.
           </p>
           <div class="mb-4">
             <h3 class="font-semibold text-gray-800">Languages I speak:</h3>
@@ -173,234 +109,96 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
     <section class="bg-gray-50 py-24 px-4">
       <div class="max-w-6xl mx-auto text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#AA96DD]">
-          My Recent Works
-        </h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[#AA96DD]">My Recent Works</h2>
         <p class="text-gray-600 mt-2">Some projects I’ve worked on recently</p>
       </div>
 
-      <div
-        class="max-w-6xl mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        <!-- Project Card 1 -->
-        <a
-          href="./projects/maverick-dresses/index.html"
-          target="_blank"
-          class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300"
-        >
-          <img
-            src="./assets/images/maverick-dresses.jpeg"
-            alt="Project 1"
-            class="w-full h-48 object-contain group-hover:scale-105 transition duration-300"
-          />
+      <div class="max-w-6xl mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="./projects/maverick-dresses/index.html" target="_blank" class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+          <img src="./assets/images/maverick-dresses.jpeg" alt="Project 1" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300" />
           <div class="p-4">
-            <h3 class="text-lg font-semibold text-[#AA96DD]">
-              Maverick Dresses
-            </h3>
+            <h3 class="text-lg font-semibold text-[#AA96DD]">Maverick Dresses</h3>
           </div>
         </a>
 
-        <!-- Project Card 2 -->
-        <a
-          href="./projects/soccerverse/index.html"
-          target="_blank"
-          class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300"
-        >
-          <img
-            src="./assets/images/soccerverse.jpeg"
-            alt="Project 1"
-            class="w-full h-48 object-contain group-hover:scale-105 transition duration-300"
-          />
+        <a href="./projects/soccerverse/index.html" target="_blank" class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+          <img src="./assets/images/soccerverse.jpeg" alt="Project 2" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300" />
           <div class="p-4">
             <h3 class="text-lg font-semibold text-[#AA96DD]">SoccerVerse</h3>
           </div>
         </a>
 
-        <!-- Project Card 3 -->
-        <a
-          href="./projects/musicPlayer/index.html"
-          target="_blank"
-          class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300"
-        >
-          <img
-            src="./assets/images/musicPlayer.jpeg"
-            alt="Project 1"
-            class="w-full h-48 object-contain group-hover:scale-105 transition duration-300"
-          />
+        <a href="./projects/musicPlayer/index.html" target="_blank" class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+          <img src="./assets/images/musicPlayer.jpeg" alt="Project 3" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300" />
           <div class="p-4">
             <h3 class="text-lg font-semibold text-[#AA96DD]">Music Player</h3>
           </div>
         </a>
       </div>
-      <!-- GitHub Button -->
+
       <div class="mt-24 text-center">
-        <a
-          href="https://github.com/manikrahuja4"
-          target="_blank"
-          class="inline-block bg-[#AA96DD] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-[#8e7cca] transition"
-        >
+        <a href="https://github.com/manikrahuja4" target="_blank" class="inline-block bg-[#AA96DD] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-[#8e7cca] transition">
           View More Projects on GitHub
         </a>
       </div>
     </section>
 
-    <!-- Call to Action (Above Footer) -->
     <section class="relative z-30">
-      <div
-        class="bg-[#f6f2fd] rounded-3xl max-w-6xl mx-auto -mb-24 px-8 py-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 text-center md:text-left border border-[#e5dfff]"
-      >
-        <!-- Text -->
+      <div class="bg-[#f6f2fd] rounded-3xl max-w-6xl mx-auto -mb-24 px-8 py-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 text-center md:text-left border border-[#e5dfff]">
         <div class="space-y-2">
           <h2 class="text-3xl font-bold text-[#6b4cbf]">Start a Project</h2>
           <p class="text-gray-700 max-w-xl">
-            Got an idea? Let’s connect and bring it to life. I’ll buy the coffee
-            ☕
+            Got an idea? Let’s connect and bring it to life. I’ll buy the coffee ☕
           </p>
         </div>
-
-        <!-- Button -->
-        <a
-          href="mailto:manikrahuja4@gmail.com"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#AA96DD] text-[#AA96DD] hover:bg-[#AA96DD] hover:text-white transition duration-300 font-semibold shadow-md"
-        >
+        <a href="mailto:manikrahuja4@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#AA96DD] text-[#AA96DD] hover:bg-[#AA96DD] hover:text-white transition duration-300 font-semibold shadow-md">
           Let’s do this
         </a>
       </div>
     </section>
 
-    <footer
-      class="relative z-10 bg-[#AA96DD] text-white pt-36 pb-12 px-6 text-center border-t border-white/20"
-    >
-      <div
-        class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-12"
-      >
-        <!-- Left Column -->
-        <div
-          class="flex flex-col items-center md:items-start text-center md:text-left gap-6"
-        >
-          <img
-            src="./assets/images/logo-w.png"
-            alt="Logo"
-            class="h-20 drop-shadow-lg"
-          />
-
+    <footer class="relative z-10 bg-[#AA96DD] text-white pt-36 pb-12 px-6 text-center border-t border-white/20">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-12">
+        <div class="flex flex-col items-center md:items-start text-center md:text-left gap-6">
+          <img src="./assets/images/logo-w.png" alt="Logo" class="h-20 drop-shadow-lg" />
           <p class="text-lg font-medium leading-relaxed max-w-md">
             Living, learning, & leveling up one day at a time.
           </p>
-
-          <!-- Social Icons -->
           <div class="flex justify-center md:justify-start items-center gap-4">
-            <a
-              href="https://www.linkedin.com/in/kamran-khan-rahuja-52aa14201?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-              target="_blank"
-              aria-label="LinkedIn"
-              class="p-2 hover:opacity-80"
-            >
+            <a href="https://www.linkedin.com/in/kamran-khan-rahuja-52aa14201" target="_blank" aria-label="LinkedIn" class="p-2 hover:opacity-80">
               <i class="fa-brands fa-linkedin text-xl text-white"></i>
             </a>
-            <a
-              href="mailto:manikrahuja4@gmail.com"
-              aria-label="Email"
-              class="p-2 hover:opacity-80"
-            >
+            <a href="mailto:manikrahuja4@gmail.com" aria-label="Email" class="p-2 hover:opacity-80">
               <i class="fa-solid fa-envelope text-xl text-white"></i>
             </a>
           </div>
         </div>
-
-        <!-- Right Column -->
-        <div
-          class="flex flex-col items-center md:items-end text-center md:text-right gap-4"
-        >
-          <p class="text-sm text-white/80">
-            © 2025 Kamran Rahuja — Designed & developed with care.
-          </p>
-
+        <div class="flex flex-col items-center md:items-end text-center md:text-right gap-4">
+          <p class="text-sm text-white/80">© 2025 Kamran Rahuja — Designed & developed with care.</p>
           <div class="flex items-center gap-2 text-sm text-white/80">
-            Built with
-            <span style="font-weight: bold;">Tailwind CSS </span>
-            and modern tools
+            Built with <span style="font-weight: bold;">Tailwind CSS</span> and modern tools
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Contact Modal -->
-    <div
-      id="contactModal"
-      class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center transition-opacity duration-500 opacity-0 pointer-events-none"
-    >
-      <div
-        class="bg-white rounded-3xl shadow-2xl w-[90%] max-w-md p-6 relative transform scale-95 opacity-0 transition-all duration-500 translate-y-4"
-        id="modalContent"
-      >
-        <!-- Close Button -->
-        <button
-          onclick="toggleModal()"
-          class="absolute top-4 right-4 text-gray-400 hover:text-[#AA96DD] text-2xl transition duration-200"
-        >
+    <div id="contactModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center transition-opacity duration-500 opacity-0 pointer-events-none">
+      <div class="bg-white rounded-3xl shadow-2xl w-[90%] max-w-md p-6 relative transform scale-95 opacity-0 transition-all duration-500 translate-y-4" id="modalContent">
+        <button onclick="toggleModal()" class="absolute top-4 right-4 text-gray-400 hover:text-[#AA96DD] text-2xl transition duration-200">
           &times;
         </button>
-
-        <!-- Modal Heading -->
-        <h2 class="text-3xl font-bold text-[#AA96DD] mb-2 text-center">
-          Let's Talk
-        </h2>
-        <p class="text-sm text-gray-600 mb-6 text-center">
-          Got a message for me? Drop it below and I’ll respond soon!
-        </p>
-
-        <!-- Contact Form -->
-        <form
-          action="https://formsubmit.co/04eed94ec7433a126b78334748df7fa1"
-          method="POST"
-          class="space-y-4"
-        >
-          <input
-            type="hidden"
-            name="_subject"
-            value="New Message from Portfolio Contact Form"
-          />
-          <input
-            type="hidden"
-            name="_next"
-            value="https://manikrahuja4.github.io"
-          />
+        <h2 class="text-3xl font-bold text-[#AA96DD] mb-2 text-center">Let's Talk</h2>
+        <p class="text-sm text-gray-600 mb-6 text-center">Got a message for me? Drop it below and I’ll respond soon!</p>
+        <form action="https://formsubmit.co/04eed94ec7433a126b78334748df7fa1" method="POST" class="space-y-4">
+          <input type="hidden" name="_subject" value="New Message from Portfolio Contact Form" />
+          <input type="hidden" name="_next" value="https://manikrahuja4.github.io" />
           <input type="hidden" name="_captcha" value="false" />
-
-          <input
-            type="text"
-            name="Name"
-            placeholder="Your Name"
-            required
-            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AA96DD] transition"
-          />
-
-          <input
-            type="email"
-            name="Email"
-            placeholder="Your Email"
-            required
-            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AA96DD] transition"
-          />
-
-          <textarea
-            name="Message"
-            placeholder="Your Message"
-            rows="4"
-            required
-            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AA96DD] transition resize-none"
-          ></textarea>
-
-          <button
-            type="submit"
-            class="w-full bg-[#AA96DD] text-white font-semibold py-3 rounded-xl hover:bg-[#9378d1] transition shadow-md hover:shadow-lg"
-          >
-            Send Message
-          </button>
+          <input type="text" name="Name" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AA96DD] transition" />
+          <input type="email" name="Email" placeholder="Your Email" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AA96DD] transition" />
+          <textarea name="Message" placeholder="Your Message" rows="4" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#AA96DD] transition resize-none"></textarea>
+          <button type="submit" class="w-full bg-[#AA96DD] text-white font-semibold py-3 rounded-xl hover:bg-[#9378d1] transition shadow-md hover:shadow-lg">Send Message</button>
         </form>
       </div>
     </div>
@@ -409,7 +207,6 @@
       function toggleModal() {
         const modal = document.getElementById("contactModal");
         const content = document.getElementById("modalContent");
-
         const isOpen = modal.classList.contains("opacity-100");
 
         if (!isOpen) {
@@ -426,11 +223,6 @@
       }
     </script>
 
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
-      integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
 </html>
