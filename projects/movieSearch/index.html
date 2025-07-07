@@ -101,11 +101,11 @@
       const btn = document.getElementById("btn");
 
       btn.addEventListener("click", () => {
-        searchMovie(input.value);
+        searchMovie(input.value.trim());
       });
 
       input.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") searchMovie(input.value);
+        if (e.key === "Enter") searchMovie(input.value.trim());
       });
 
 async function searchMovie(query = "spiderman") {
