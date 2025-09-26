@@ -4,8 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kamran Rahuja | Frontend Web Developer</title>
-    <link rel="stylesheet" href="css/output.css" />
-    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+
+    <!-- Tailwind CSS Output -->
+    <link rel="stylesheet" href="./css/output.css" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon" />
+
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -13,15 +19,89 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Custom Styles -->
     <style>
       html {
         scroll-behavior: smooth;
       }
+
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .project-card {
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+      }
+
+      .project-image {
+        transform: translateZ(20px);
+      }
+
+      .project-content {
+        transform: translateZ(10px);
+      }
+
+      .floating-shape {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-shape:nth-child(2) {
+        animation-delay: 1s;
+      }
+
+      .floating-shape:nth-child(3) {
+        animation-delay: 2s;
+      }
+
+      .tech-tag {
+        transition: all 0.3s ease;
+      }
+
+      .tech-tag:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-card:hover .project-image {
+        transform: translateZ(30px) scale(1.05);
+      }
+
+      .github-btn {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .github-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .github-btn:hover::before {
+        left: 100%;
+      }
     </style>
   </head>
   <body class="bg-white text-gray-800">
+    <!-- Navbar -->
     <nav>
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 md:pt-8 px-4">
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 md:pt-8 px-4"
+      >
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="./assets/images/logo.png" class="h-10" alt="Logo" />
         </a>
@@ -33,6 +113,7 @@
         </button>
       </div>
     </nav>
+
 
     <section class="w-full max-w-screen min-h-screen md:pt-32 flex items-center justify-center flex-col text-center px-4 relative">
       <h1 class="text-3xl md:text-5xl font-bold mb-4">Designer, Frontend Developer & Mentor</h1>
@@ -52,166 +133,243 @@
     </section>
 
 <!-- Skills Section -->
-    <section class="-mt-20 px-4 pb-24 relative z-10">
-      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Designer Card -->
-        <div class="bg-white shadow-xl rounded-2xl p-8 transition hover:shadow-2xl">
-          <div class="flex justify-center mb-6">
-            <div class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center">
-              <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor">
-                <path d="M480 24c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 40-40 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l40 0 0 40c0 8.8 7.2 16 16 16s16-7.2 16-16l0-40 40 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-40 0 0-40zM288 128c-7.5 0-15 1.6-21.8 4.7L48.8 230.1C38.6 234.7 32 244.8 32 256s6.6 21.3 16.8 25.9l217.4 97.5c6.9 3.1 14.3 4.7 21.8 4.7s15-1.6 21.8-4.7l217.4-97.5c10.2-4.6 16.8-14.7 16.8-25.9s-6.6-21.3-16.8-25.9L309.8 132.7c-6.9-3.1-14.3-4.7-21.8-4.7zm-8.8 33.9c2.8-1.2 5.7-1.9 8.8-1.9s6 .6 8.8 1.9l210 94.1-210 94.1c-2.8 1.2-5.7 1.9-8.8 1.9s-6-.6-8.8-1.9L69.3 256l210-94.1zM94.7 337.5L48.8 358.1C38.6 362.7 32 372.8 32 384s6.6 21.3 16.8 25.9l217.4 97.5c6.9 3.1 14.3 4.7 21.8 4.7s15-1.6 21.8-4.7l217.4-97.5c10.2-4.6 16.8-14.7 16.8-25.9s-6.6-21.3-16.8-25.9l-45.9-20.6-39.1 17.5L506.7 384l-210 94.1c-2.8 1.2-5.7 1.9-8.8 1.9s-6-.6-8.8-1.9L69.3 384l64.5-28.9L94.7 337.5z"/>
-              </svg>
-            </div>
-          </div>
-          <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">Designer</h2>
-          <p class="text-gray-600 text-center mb-6">
-            I value simple content structure, clean design, and meaningful visual communication.
-          </p>
-          <div class="mb-4">
-            <h3 class="font-semibold text-gray-800">Things I enjoy designing:</h3>
-            <p class="text-gray-600">UX, UI, Web, Apps, Logos</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-800">Design Tools:</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-              <li>Figma</li>
-              <li>Canva</li>
-              <li>CorelDRAW</li>
-              <li>Adobe Illustrator</li>
-            </ul>
-          </div>
-        </div>
+<section class="-mt-20 px-4 pb-24 relative z-10">
 
-        <!-- Frontend Developer Card -->
-        <div class="bg-white shadow-xl rounded-2xl p-8 transition hover:shadow-2xl">
-          <div class="flex justify-center mb-6">
-            <div class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center">
-              <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path fill="currentColor" d="M384 64c17.7 0 32 14.3 32 32v320c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32h320zm0-32H64C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zM83.9 149.6c-5.8 6.7-5 16.8 1.7 22.6L183.4 256 85.6 339.9c-6.7 5.8-7.5 15.8-1.7 22.6s15.9 7.5 22.6 1.7l112-96c3.5-3 5.6-7.5 5.6-12.1s-2-9.1-5.6-12.1l-112-96c-6.7-5.8-16.8-5-22.6 1.7zM208 352c-8.8 0-16 7.2-16 16s7.2 16 16 16h160c8.8 0 16-7.2 16-16s-7.2-16-16-16H208z"/>
-              </svg>
-            </div>
-          </div>
-          <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">Frontend Developer</h2>
-          <p class="text-gray-600 text-center mb-6">
-            I enjoy turning ideas into real, interactive websites with clean and efficient code.
-          </p>
-          <div class="mb-4">
-            <h3 class="font-semibold text-gray-800">Languages I speak:</h3>
-            <p class="text-gray-600">HTML, CSS, JavaScript, Sass</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-800">Dev Tools:</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-              <li>Tailwind CSS</li>
-              <li>Bootstrap</li>
-              <li>Git & GitHub</li>
-              <li>VS Code</li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- Backend Developer Card -->
-        <div class="bg-white shadow-xl rounded-2xl p-8 transition hover:shadow-2xl">
-          <div class="flex justify-center mb-6">
-            <div class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center">
-              <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="currentColor" d="M64 96c0-35.3 28.7-64 64-64H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64V96zm64 0v64h64V96H128zm64 256v64h64V352H192zm0-128v64h64V224H192zm128 128v64h64V352H320zm0-128v64h64V224H320zm0-128v64h64V96H320z"/>
-              </svg>
-            </div>
-          </div>
-          <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">Backend Developer</h2>
-          <p class="text-gray-600 text-center mb-6">
-            I build robust server-side applications and manage databases to power web applications.
-          </p>
-          <div class="mb-4">
-            <h3 class="font-semibold text-gray-800">Languages I work with:</h3>
-            <p class="text-gray-600">PHP, MySQL, Java (Basic)</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-800">Dev Tools & Technologies:</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-              <li>PHP Frameworks</li>
-              <li>MySQL Workbench</li>
-              <li>Apache Server</li>
-              <li>RESTful APIs</li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- Additional Skills Card -->
-        <div class="bg-white shadow-xl rounded-2xl p-8 transition hover:shadow-2xl">
-          <div class="flex justify-center mb-6">
-            <div class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center">
-              <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="currentColor" d="M184 0c30.9 0 56 25.1 56 56V456c0 30.9-25.1 56-56 56c-28.9 0-52.7-21.9-55.7-50.1c-5.2 1.5-10.7 2.1-16.3 2.1c-35.3 0-64-28.7-64-64c0-7.4 1.3-14.6 3.6-21.2C21.4 367.4 0 338.2 0 304c0-31.9 18.7-59.5 45.8-72.3C37.1 220.8 32 207 32 192c0-30.7 21.6-56.3 50.4-62.6C80.8 123.9 80 118 80 112c0-29.9 20.6-55.1 48.3-62.1C131.3 21.9 155.1 0 184 0zM328 0c28.9 0 52.6 21.9 55.7 49.9c27.8 7 48.3 32.1 48.3 62.1c0 6-.8 11.9-2.4 17.4c28.8 6.2 50.4 31.9 50.4 62.6c0 15-5.1 28.8-13.8 39.7C493.3 244.5 512 272.1 512 304c0 34.2-21.4 63.4-51.6 74.8c2.3 6.6 3.6 13.8 3.6 21.2c0 35.3-28.7 64-64 64c-5.6 0-11.1-.7-16.3-2.1c-3 28.2-26.8 50.1-55.7 50.1c-30.9 0-56-25.1-56-56V56c0-30.9 25.1-56 56-56z"/>
-              </svg>
-            </div>
-          </div>
-          <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">Full Stack Skills</h2>
-          <p class="text-gray-600 text-center mb-6">
-            Combining frontend and backend expertise to create complete web solutions.
-          </p>
-          <div class="mb-4">
-            <h3 class="font-semibold text-gray-800">All Programming Languages:</h3>
-            <p class="text-gray-600">HTML, CSS, JavaScript, Sass, PHP, MySQL, Java</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-gray-800">Development Approach:</h3>
-            <ul class="list-disc list-inside text-gray-600 space-y-1">
-              <li>Responsive Web Design</li>
-              <li>Database Management</li>
-              <li>API Integration</li>
-              <li>Problem Solving</li>
-            </ul>
-          </div>
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+    <!-- Designer Card -->
+    <div class="bg-white shadow-xl rounded-2xl p-8 transition transform hover:-translate-y-2 hover:shadow-2xl hover:bg-gradient-to-b hover:from-white hover:to-purple-50 group">
+      <div class="flex justify-center mb-6">
+        <div class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center transition-transform group-hover:rotate-12">
+          <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor">
+            <path d="M480 24c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 40-40 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l40 0 0 40c0 8.8 7.2 16 16 16s16-7.2 16-16l0-40 40 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-40 0 0-40zM288 128c-7.5 0-15 1.6-21.8 4.7L48.8 230.1C38.6 234.7 32 244.8 32 256s6.6 21.3 16.8 25.9l217.4 97.5c6.9 3.1 14.3 4.7 21.8 4.7s15-1.6 21.8-4.7l217.4-97.5c10.2-4.6 16.8-14.7 16.8-25.9s-6.6-21.3-16.8-25.9L309.8 132.7c-6.9-3.1-14.3-4.7-21.8-4.7zm-8.8 33.9c2.8-1.2 5.7-1.9 8.8-1.9s6 .6 8.8 1.9l210 94.1-210 94.1c-2.8 1.2-5.7 1.9-8.8 1.9s-6-.6-8.8-1.9L69.3 256l210-94.1zM94.7 337.5L48.8 358.1C38.6 362.7 32 372.8 32 384s6.6 21.3 16.8 25.9l217.4 97.5c6.9 3.1 14.3 4.7 21.8 4.7s15-1.6 21.8-4.7l217.4-97.5c10.2-4.6 16.8-14.7 16.8-25.9s-6.6-21.3-16.8-25.9l-45.9-20.6-39.1 17.5L506.7 384l-210 94.1c-2.8 1.2-5.7 1.9-8.8 1.9s-6-.6-8.8-1.9L69.3 384l64.5-28.9L94.7 337.5z"/>
+          </svg>
         </div>
       </div>
-    </section>
-
-    <section class="bg-gray-50 py-24 px-4">
-      <div class="max-w-6xl mx-auto text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#AA96DD]">My Recent Works</h2>
-        <p class="text-gray-600 mt-2">Some projects I’ve worked on recently</p>
+      <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">Designer</h2>
+      <p class="text-gray-600 text-center mb-6">I value simple content structure, clean design, and meaningful visual communication.</p>
+      <div class="mb-4">
+        <h3 class="font-semibold text-gray-800">Things I enjoy designing:</h3>
+        <p class="text-gray-600">UX, UI, Web, Apps, Logos</p>
       </div>
-
-      <div class="max-w-6xl mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <a href="./projects/movieSearch/index.html" target="_blank" class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
-          <img src="./assets/images/movieSearch.jpeg" alt="Project 1" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300" />
-          <div class="p-4">
-            <h3 class="text-lg font-semibold text-[#AA96DD]">Movie Search (OMDB API)</h3>
-          </div>
-        </a>
-
-        <a href="./projects/maverick-dresses/index.html" target="_blank" class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
-          <img src="./assets/images/maverick-dresses.jpeg" alt="Project 1" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300" />
-          <div class="p-4">
-            <h3 class="text-lg font-semibold text-[#AA96DD]">Maverick Dresses</h3>
-          </div>
-        </a>
-
-        <a href="./projects/soccerverse/index.html" target="_blank" class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
-          <img src="./assets/images/soccerverse.jpeg" alt="Project 2" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300" />
-          <div class="p-4">
-            <h3 class="text-lg font-semibold text-[#AA96DD]">SoccerVerse</h3>
-          </div>
-        </a>
-
-        <a href="./projects/musicPlayer/index.html" target="_blank" class="group block bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
-          <img src="./assets/images/musicPlayer.jpeg" alt="Project 3" class="w-full h-48 object-contain group-hover:scale-105 transition duration-300" />
-          <div class="p-4">
-            <h3 class="text-lg font-semibold text-[#AA96DD]">Music Player</h3>
-          </div>
-        </a>
+      <div>
+        <h3 class="font-semibold text-gray-800">Design Tools:</h3>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">Figma</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">Canva</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">CorelDRAW</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">Illustrator</span>
+        </div>
       </div>
+    </div>
 
-      <div class="mt-24 text-center">
-        <a href="https://github.com/manikrahuja4" target="_blank" class="inline-block bg-[#AA96DD] text-white px-6 py-3 rounded-full font-semibold shadow-md hover:bg-[#8e7cca] transition">
-          View More Projects on GitHub
-        </a>
+    <!-- Frontend Developer Card -->
+    <div class="bg-white shadow-xl rounded-2xl p-8 transition transform hover:-translate-y-2 hover:shadow-2xl hover:bg-gradient-to-b hover:from-white hover:to-purple-50 group">
+      <div class="flex justify-center mb-6">
+        <div class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center transition-transform group-hover:rotate-12">
+          <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M384 64c17.7 0 32 14.3 32 32v320c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32h320zm0-32H64C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64zM83.9 149.6c-5.8 6.7-5 16.8 1.7 22.6L183.4 256 85.6 339.9c-6.7 5.8-7.5 15.8-1.7 22.6s15.9 7.5 22.6 1.7l112-96c3.5-3 5.6-7.5 5.6-12.1s-2-9.1-5.6-12.1l-112-96c-6.7-5.8-16.8-5-22.6 1.7zM208 352c-8.8 0-16 7.2-16 16s7.2 16 16 16h160c8.8 0 16-7.2 16-16s-7.2-16-16-16H208z"/>
+          </svg>
+        </div>
       </div>
-    </section>
+      <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">Frontend Developer</h2>
+      <p class="text-gray-600 text-center mb-6">I enjoy turning ideas into real, interactive websites with clean and efficient code.</p>
+      <div class="mb-4">
+        <h3 class="font-semibold text-gray-800">Languages I speak:</h3>
+        <p class="text-gray-600">HTML, CSS, JavaScript, Sass</p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-gray-800">Dev Tools:</h3>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">Tailwind CSS</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">Bootstrap</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">Git & GitHub</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">VS Code</span>
+        </div>
+      </div>
+    </div>
 
-    <section class="relative z-30">
+    <!-- Backend Developer Card -->
+    <div class="bg-white shadow-xl rounded-2xl p-8 transition transform hover:-translate-y-2 hover:shadow-2xl hover:bg-gradient-to-b hover:from-white hover:to-purple-50 group">
+      <div class="flex justify-center mb-6">
+        <div class="w-16 h-16 rounded-full bg-[#AA96DD] flex items-center justify-center transition-transform group-hover:rotate-12">
+          <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M64 96c0-35.3 28.7-64 64-64H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H128c-35.3 0-64-28.7-64-64V96zm64 0v64h64V96H128zm64 256v64h64V352H192zm0-128v64h64V224H192zm128 128v64h64V352H320zm0-128v64h64V224H320zm0-128v64h64V96H320z"/>
+          </svg>
+        </div>
+      </div>
+      <h2 class="text-xl font-bold text-[#AA96DD] text-center mb-2">Backend Developer</h2>
+      <p class="text-gray-600 text-center mb-6">I build robust server-side applications and manage databases to power web applications.</p>
+      <div class="mb-4">
+        <h3 class="font-semibold text-gray-800">Languages I work with:</h3>
+        <p class="text-gray-600">PHP, MySQL, Java (Basic)</p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-gray-800">Dev Tools & Technologies:</h3>
+        <div class="flex flex-wrap gap-2 mt-2">
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">PHP Frameworks</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">MySQL Workbench</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">Apache Server</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">RESTful APIs</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Projects Section -->
+<section class="py-24 px-4 relative overflow-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="floating-shape absolute top-10 left-10 w-20 h-20 bg-purple-200 rounded-full opacity-20"></div>
+        <div class="floating-shape absolute top-1/4 right-10 w-16 h-16 bg-[#AA96DD] rounded-full opacity-30"></div>
+        <div class="floating-shape absolute bottom-20 left-1/4 w-24 h-24 bg-purple-100 rounded-full opacity-30"></div>
+        <div class="floating-shape absolute bottom-10 right-1/4 w-12 h-12 bg-[#AA96DD] rounded-full opacity-40"></div>
+    </div>
+    
+    <div class="max-w-6xl mx-auto relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-[#AA96DD] mb-4 animate-pulse-slow">
+                My <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Creative</span> Works
+            </h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+                Explore my recent projects that showcase my skills in web development and design
+            </p>
+            
+            <!-- Animated Divider -->
+            <div class="flex justify-center mt-6">
+                <div class="w-24 h-1 bg-gradient-to-r from-[#AA96DD] to-purple-400 rounded-full"></div>
+                <div class="w-3 h-3 bg-[#AA96DD] rounded-full mx-2 mt-[-4px] animate-bounce-slow"></div>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-[#AA96DD] rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Project 1 -->
+            <div class="project-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/50">
+                <div class="relative overflow-hidden">
+                    <img src="./assets/images/movieSearch.jpeg" 
+                         alt="Movie Search Project" 
+                         class="w-full h-48 object-cover project-image transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                        <a href="./projects/movieSearch/index.html" target="_blank" class="bg-white text-[#AA96DD] px-4 py-2 rounded-full font-semibold transform translate-y-10 group-hover:translate-y-0 transition-transform duration-300">
+                            View Project <i class="ml-1 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-6 project-content">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Movie Search</h3>
+                        <span class="text-xs bg-purple-100 text-[#AA96DD] px-2 py-1 rounded-full font-semibold">API Integration</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">A responsive web app that searches and displays movie information using the OMDB API.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">JavaScript</span>
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">API</span>
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Responsive</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/50">
+                <div class="relative overflow-hidden">
+                    <img src="./assets/images/maverick-dresses.jpeg" 
+                         alt="Maverick Dresses" 
+                         class="w-full h-48 object-cover project-image transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                        <a href="./projects/maverick-dresses/index.html" target="_blank" class="bg-white text-[#AA96DD] px-4 py-2 rounded-full font-semibold transform translate-y-10 group-hover:translate-y-0 transition-transform duration-300">
+                            View Project <i class="ml-1 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-6 project-content">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Maverick Dresses</h3>
+                        <span class="text-xs bg-pink-100 text-pink-600 px-2 py-1 rounded-full font-semibold">Landing Page</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">A stylish landing page for an e-commerce brand, featuring a gallery of dresses with smooth animations and clean design.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">HTML/CSS</span>
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Tailwind</span>
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">UI Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/50">
+                <div class="relative overflow-hidden">
+                    <img src="./assets/images/soccerverse.jpeg" 
+                         alt="SoccerVerse" 
+                         class="w-full h-48 object-cover project-image transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                        <a href="./projects/soccerverse/index.html" target="_blank" class="bg-white text-[#AA96DD] px-4 py-2 rounded-full font-semibold transform translate-y-10 group-hover:translate-y-0 transition-transform duration-300">
+                            View Project <i class="ml-1 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-6 project-content">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">SoccerVerse</h3>
+                        <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full font-semibold">Frontend</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">A static frontend website for soccer fans, built with HTML, CSS, Tailwind, and JavaScript. Includes team info and player galleries.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">HTML</span>
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Tailwind</span>
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/50">
+                <div class="relative overflow-hidden">
+                    <img src="./assets/images/musicPlayer.jpeg" 
+                         alt="Music Player" 
+                         class="w-full h-48 object-cover project-image transition-transform duration-500" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                        <a href="./projects/musicPlayer/index.html" target="_blank" class="bg-white text-[#AA96DD] px-4 py-2 rounded-full font-semibold transform translate-y-10 group-hover:translate-y-0 transition-transform duration-300">
+                            View Project <i class="ml-1 fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-6 project-content">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Music Player</h3>
+                        <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded-full font-semibold">Media</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">A sleek music player with playlist management, audio controls, and visualizer effects.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">JavaScript</span>
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Audio API</span>
+                        <span class="tech-tag text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">UI/UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GitHub Button -->
+        <div class="mt-16 text-center">
+            <a href="https://github.com/manikrahuja4" target="_blank" 
+               class="github-btn inline-flex items-center bg-gradient-to-r from-[#AA96DD] to-purple-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <i class="fab fa-github mr-2"></i> 
+                View More Projects on GitHub
+                <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+   <section class="relative z-30">
       <div class="bg-[#f6f2fd] rounded-3xl max-w-6xl mx-auto -mb-24 px-8 py-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 text-center md:text-left border border-[#e5dfff]">
         <div class="space-y-2">
           <h2 class="text-3xl font-bold text-[#6b4cbf]">Start a Project</h2>
@@ -255,6 +413,15 @@
                 </div>
             </div>
         </div>
+          <!-- Back to top button -->
+<button id="backToTop" 
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        class="fixed bottom-6 right-6 bg-white text-[#AA96DD] border-2 border-[#AA96DD] p-3 px-4 rounded-full shadow-2xl hover:scale-110 hover:shadow-xl transition-all duration-300 opacity-0 pointer-events-none z-50">
+    <i class="fa-solid fa-arrow-up text-lg md:text-xl"></i>
+</button>
+
+
+
     </footer>
 
     <div id="contactModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center transition-opacity duration-500 opacity-0 pointer-events-none">
@@ -277,6 +444,20 @@
     </div>
 
     <script>
+  // Show "Back to Top" button on scroll
+  window.addEventListener("scroll", () => {
+    const btn = document.getElementById("backToTop");
+    if (window.scrollY > 200) {
+      btn.classList.remove("opacity-0", "pointer-events-none");
+      btn.classList.add("opacity-100", "pointer-events-auto");
+    } else {
+      btn.classList.add("opacity-0", "pointer-events-none");
+      btn.classList.remove("opacity-100", "pointer-events-auto");
+    }
+  });
+</script>
+    <!-- Modal Toggle & Animation -->
+    <script>
       function toggleModal() {
         const modal = document.getElementById("contactModal");
         const content = document.getElementById("modalContent");
@@ -285,17 +466,69 @@
         if (!isOpen) {
           modal.classList.remove("opacity-0", "pointer-events-none");
           modal.classList.add("opacity-100", "pointer-events-auto");
+
           content.classList.remove("opacity-0", "scale-95", "translate-y-4");
           content.classList.add("opacity-100", "scale-100", "translate-y-0");
         } else {
           modal.classList.remove("opacity-100", "pointer-events-auto");
           modal.classList.add("opacity-0", "pointer-events-none");
+
           content.classList.remove("opacity-100", "scale-100", "translate-y-0");
           content.classList.add("opacity-0", "scale-95", "translate-y-4");
         }
       }
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Project Card Interactivity & Scroll Animations -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const projectCards = document.querySelectorAll(".project-card");
+
+        // 3D tilt effect on hover
+        projectCards.forEach((card) => {
+          card.addEventListener("mouseenter", () => {
+            card.style.transform =
+              "perspective(1000px) rotateY(5deg) rotateX(5deg)";
+          });
+
+          card.addEventListener("mouseleave", () => {
+            card.style.transform =
+              "perspective(1000px) rotateY(0deg) rotateX(0deg)";
+          });
+        });
+
+        // Smooth reveal on scroll
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = "translateY(0)";
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          }
+        );
+
+        projectCards.forEach((card) => {
+          card.style.opacity = 0;
+          card.style.transform = "translateY(20px)";
+          card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+          observer.observe(card);
+        });
+      });
+    </script>
+
+    <!-- FontAwesome (icons) -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
+      integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </body>
 </html>
+
