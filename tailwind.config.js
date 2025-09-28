@@ -12,7 +12,10 @@ module.exports = {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
                         }
-                    }
+                    },
+                    fontFamily: {
+      sans: ['Poppins', 'sans-serif'],
+    },
                 }
             },
   plugins: [],

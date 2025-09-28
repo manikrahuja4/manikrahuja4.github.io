@@ -11,6 +11,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon" />
 
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -20,61 +23,51 @@
       referrerpolicy="no-referrer"
     />
 
-    <!-- Custom Styles -->
+    <!-- Global Styles -->
     <style>
       html {
         scroll-behavior: smooth;
+        font-family: "Poppins", sans-serif;
       }
-
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
       body {
         font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
       }
 
       .project-card {
         transform-style: preserve-3d;
         transform: perspective(1000px);
       }
-
       .project-image {
         transform: translateZ(20px);
       }
-
       .project-content {
         transform: translateZ(10px);
       }
-
       .floating-shape {
         animation: float 6s ease-in-out infinite;
       }
-
       .floating-shape:nth-child(2) {
         animation-delay: 1s;
       }
-
       .floating-shape:nth-child(3) {
         animation-delay: 2s;
       }
-
       .tech-tag {
         transition: all 0.3s ease;
       }
-
       .tech-tag:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
-
       .project-card:hover .project-image {
         transform: translateZ(30px) scale(1.05);
       }
-
       .github-btn {
         position: relative;
         overflow: hidden;
       }
-
       .github-btn::before {
         content: "";
         position: absolute;
@@ -90,32 +83,138 @@
         );
         transition: left 0.5s;
       }
-
       .github-btn:hover::before {
         left: 100%;
+      }
+
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      #mobile-menu.open .mobile-link {
+        animation: fadeInUp .5s ease forwards;
+        animation-delay: calc(var(--i) * 100ms);
       }
     </style>
   </head>
   <body class="bg-white text-gray-800">
-    <!-- Navbar -->
-    <nav>
-      <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 md:pt-8 px-4"
-      >
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="./assets/images/logo.png" class="h-10" alt="Logo" />
-        </a>
-        <button
-          onclick="toggleModal()"
-          class="border-2 border-[#AA96DD] text-[#9070e2] font-medium md:font-semibold rounded-full py-1 px-3 md:px-4 md:py-2 hover:bg-[#AA96DD] hover:text-white transition hover:shadow-xl"
-        >
-          Say Hello
-        </button>
-      </div>
+
+<!-- Navbar -->
+<nav class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-white/30">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3 md:py-5">
+
+    <!-- Logo -->
+    <a href="#home" class="flex items-center gap-3">
+      <img src="./assets/images/logo.png" alt="Logo" class="h-10" />
+      <span class="hidden sm:inline text-2xl font-semibold text-[#AA96DD]">
+        Kamran
+      </span>
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center gap-8 font-medium text-gray-700">
+      <a href="#home" class="hover:text-[#9070e2] transition">Home</a>
+      <a href="#about" class="hover:text-[#9070e2] transition">About</a>
+      <a href="#skills" class="hover:text-[#9070e2] transition">Skills</a>
+      <a href="#projects" class="hover:text-[#9070e2] transition">Projects</a>
+      <a href="#contact" class="hover:text-[#9070e2] transition">Contact</a>
+      <button
+        onclick="toggleModal()"
+        class="border-2 border-[#AA96DD] text-[#9070e2] font-medium rounded-full px-4 py-2 hover:bg-[#AA96DD] hover:text-white transition hover:shadow-xl">
+        Say Hello
+      </button>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" aria-label="Open menu" class="md:hidden text-gray-700 text-2xl p-2 rounded-lg hover:bg-gray-100/60 transition">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" aria-hidden="true"
+       class="fixed inset-0 h-screen bg-gradient-to-br from-[#AA96DD] to-[#9070e2] text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 flex flex-col items-center justify-center space-y-8 text-lg font-medium">
+
+    <!-- Close -->
+    <button id="close-btn" aria-label="Close menu" class="absolute top-6 right-6 text-3xl text-white p-2 rounded-md hover:bg-white/10 transition">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <!-- Title -->
+    <div class="text-center space-y-2 mb-6 fade-up">
+      <h3 class="text-3xl font-bold">Hey!</h3>
+      <p class="text-white/80">Let’s get around the site.</p>
+    </div>
+
+    <!-- Links -->
+    <nav class="flex flex-col items-center space-y-6">
+      <a href="#home" class="mobile-link opacity-0">Home</a>
+      <a href="#about" class="mobile-link opacity-0">About</a>
+      <a href="#skills" class="mobile-link opacity-0">Skills</a>
+      <a href="#projects" class="mobile-link opacity-0">Projects</a>
+      <a href="#contact" class="mobile-link opacity-0">Contact</a>
     </nav>
 
+    <!-- Button + Socials -->
+    <div class="mt-8 flex flex-col items-center gap-4">
+      <button onclick="toggleModal()" class="border-2 border-white rounded-full px-6 py-2 hover:bg-white hover:text-[#9070e2] transition">Say Hello</button>
+      <div class="flex items-center gap-4 mt-2 text-white/90">
+        <a href="mailto:manikrahuja4@gmail.com" class="p-2 rounded-md hover:bg-white/10 transition"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://github.com/manikrahuja4" target="_blank" class="p-2 rounded-md hover:bg-white/10 transition"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/kamran-khan-rahuja-52aa14201" target="_blank" class="p-2 rounded-md hover:bg-white/10 transition"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>
 
-    <section class="w-full max-w-screen min-h-screen md:pt-32 flex items-center justify-center flex-col text-center px-4 relative">
+<!-- Animations -->
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  #mobile-menu.open .mobile-link {
+    animation: fadeInUp .5s ease forwards;
+  }
+  #mobile-menu.open .mobile-link:nth-child(1) { animation-delay: 0.1s; }
+  #mobile-menu.open .mobile-link:nth-child(2) { animation-delay: 0.2s; }
+  #mobile-menu.open .mobile-link:nth-child(3) { animation-delay: 0.3s; }
+  #mobile-menu.open .mobile-link:nth-child(4) { animation-delay: 0.4s; }
+  #mobile-menu.open .mobile-link:nth-child(5) { animation-delay: 0.5s; }
+</style>
+
+<!-- JS -->
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const closeBtn = document.getElementById("close-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  function toggleMenu(open) {
+    if (open) {
+      mobileMenu.classList.remove("translate-x-full");
+      mobileMenu.classList.add("translate-x-0", "open");
+      mobileMenu.setAttribute("aria-hidden", "false");
+    } else {
+      mobileMenu.classList.remove("translate-x-0", "open");
+      mobileMenu.classList.add("translate-x-full");
+      mobileMenu.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  menuBtn.addEventListener("click", () => toggleMenu(true));
+  closeBtn.addEventListener("click", () => toggleMenu(false));
+
+  document.querySelectorAll(".mobile-link").forEach(link => {
+    link.addEventListener("click", () => setTimeout(() => toggleMenu(false), 150));
+  });
+</script>
+
+
+
+
+
+
+    <section id="home" class="w-full max-w-screen min-h-screen md:pt-56 flex items-center justify-center flex-col text-center px-4 relative">
       <h1 class="text-3xl md:text-5xl font-bold mb-4">Designer, Frontend Developer & Mentor</h1>
       <p class="text-base md:text-lg text-gray-600 max-w-xl mb-5">
         I design and code beautifully simple things, and I love what I do.
@@ -125,7 +224,7 @@
       <img src="./assets/images/hero-section.svg" alt="Hero Image" class="w-[90%] md:w-[50%] h-auto absolute bottom-0" />
     </section>
 
-    <section class="bg-[#AA96DD] py-24 px-4 text-center md:py-44">
+    <section id="about" class="bg-[#AA96DD] py-24 px-4 text-center md:py-44">
       <h1 class="text-white text-3xl md:text-4xl font-bold mb-4">Hi, I’m Kamran. Nice to meet you.</h1>
       <p class="text-white max-w-xl mx-auto">
         My journey as a developer began during my time at Aptech, where I built a strong foundation in programming and design. Along the way, I’ve participated in competitions, earned awards, and created projects that reflect my passion for building user-friendly digital experiences. I'm a curious learner, always improving my skills, and excited to keep growing in this field.
@@ -133,7 +232,7 @@
     </section>
 
 <!-- Skills Section -->
-<section class="-mt-20 px-4 pb-24 relative z-10">
+<section id="skills" class="-mt-20 px-4 pb-24 relative z-10 scroll-mt-48">
 
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     
@@ -207,10 +306,10 @@
       <div>
         <h3 class="font-semibold text-gray-800">Dev Tools & Technologies:</h3>
         <div class="flex flex-wrap gap-2 mt-2">
-          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">PHP Frameworks</span>
+          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">PHP</span>
           <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">MySQL Workbench</span>
           <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">Apache Server</span>
-          <span class="px-3 py-1 bg-purple-100 text-[#AA96DD] rounded-full text-sm font-medium hover:bg-[#AA96DD] hover:text-white transition">RESTful APIs</span>
+          
         </div>
       </div>
     </div>
@@ -221,12 +320,12 @@
 
 
 <!-- Projects Section -->
-<section class="py-24 px-4 relative overflow-hidden">
+<section id="projects" class="py-24 px-4 relative overflow-hidden">
     <!-- Floating Background Shapes -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-        <div class="floating-shape absolute top-10 left-10 w-20 h-20 bg-purple-200 rounded-full opacity-20"></div>
+        <div class="floating-shape absolute top-10 left-10 w-20 h-20 bg-purple-300 rounded-full opacity-20"></div>
         <div class="floating-shape absolute top-1/4 right-10 w-16 h-16 bg-[#AA96DD] rounded-full opacity-30"></div>
-        <div class="floating-shape absolute bottom-20 left-1/4 w-24 h-24 bg-purple-100 rounded-full opacity-30"></div>
+        <div class="floating-shape absolute bottom-20 left-1/4 w-24 h-24 bg-purple-300 rounded-full opacity-30"></div>
         <div class="floating-shape absolute bottom-10 right-1/4 w-12 h-12 bg-[#AA96DD] rounded-full opacity-40"></div>
     </div>
     
@@ -369,7 +468,7 @@
 
 
 
-   <section class="relative z-30">
+   <section id="contact" class="relative z-30">
       <div class="bg-[#f6f2fd] rounded-3xl max-w-6xl mx-auto -mb-24 px-8 py-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 text-center md:text-left border border-[#e5dfff]">
         <div class="space-y-2">
           <h2 class="text-3xl font-bold text-[#6b4cbf]">Start a Project</h2>
