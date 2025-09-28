@@ -1,220 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kamran Rahuja | Frontend Web Developer</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamran Rahuja | Frontend Web Developer</title>
 
-    <!-- Tailwind CSS Output -->
-    <link rel="stylesheet" href="./css/output.css" />
+  <!-- Base (if domain is username.github.io/repo) -->
+  <!-- <base href="/manikrahuja4.github.io/" /> -->
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="./css/output.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Poppins Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+  <style>
+    html {
+      scroll-behavior: smooth;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
 
-    <!-- Global Styles -->
-    <style>
-      html {
-        scroll-behavior: smooth;
-        font-family: "Poppins", sans-serif;
-      }
-      body {
-        font-family: "Poppins", sans-serif;
-        margin: 0;
-        padding: 0;
-      }
+    /* For tailwind purge safety: ensure classes not removed */
+    .translate-x-full { }
+    .translate-x-0 { }
+    .open { }
 
-      .project-card {
-        transform-style: preserve-3d;
-        transform: perspective(1000px);
-      }
-      .project-image {
-        transform: translateZ(20px);
-      }
-      .project-content {
-        transform: translateZ(10px);
-      }
-      .floating-shape {
-        animation: float 6s ease-in-out infinite;
-      }
-      .floating-shape:nth-child(2) {
-        animation-delay: 1s;
-      }
-      .floating-shape:nth-child(3) {
-        animation-delay: 2s;
-      }
-      .tech-tag {
-        transition: all 0.3s ease;
-      }
-      .tech-tag:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-      .project-card:hover .project-image {
-        transform: translateZ(30px) scale(1.05);
-      }
-      .github-btn {
-        position: relative;
-        overflow: hidden;
-      }
-      .github-btn::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        transition: left 0.5s;
-      }
-      .github-btn:hover::before {
-        left: 100%;
-      }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    #mobile-menu.open .mobile-link {
+      animation: fadeInUp .5s ease forwards;
+    }
+    #mobile-menu.open .mobile-link:nth-child(1) { animation-delay: 0.1s; }
+    #mobile-menu.open .mobile-link:nth-child(2) { animation-delay: 0.2s; }
+    #mobile-menu.open .mobile-link:nth-child(3) { animation-delay: 0.3s; }
+    #mobile-menu.open .mobile-link:nth-child(4) { animation-delay: 0.4s; }
+    #mobile-menu.open .mobile-link:nth-child(5) { animation-delay: 0.5s; }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
 
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(12px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-      #mobile-menu.open .mobile-link {
-        animation: fadeInUp .5s ease forwards;
-        animation-delay: calc(var(--i) * 100ms);
-      }
-    </style>
-  </head>
-  <body class="bg-white text-gray-800">
+  <!-- NAVBAR -->
+  <nav class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-white/30">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3 md:py-5">
+      <a href="#home" class="flex items-center gap-3">
+        <img src="assets/images/logo.png" alt="Logo" class="h-10" />
+        <span class="hidden sm:inline text-lg font-semibold text-[#9070e2]">Kamran</span>
+      </a>
 
-<!-- Navbar -->
-<nav class="fixed w-full top-0 left-0 z-50 backdrop-blur-md bg-white/30">
-  <div class="max-w-screen-xl mx-auto flex items-center justify-between px-4 py-3 md:py-5">
+      <div class="hidden md:flex items-center gap-8 font-medium text-gray-700">
+        <a href="#home" class="hover:text-[#9070e2] transition">Home</a>
+        <a href="#about" class="hover:text-[#9070e2] transition">About</a>
+        <a href="#skills" class="hover:text-[#9070e2] transition">Skills</a>
+        <a href="#projects" class="hover:text-[#9070e2] transition">Projects</a>
+        <a href="#contact" class="hover:text-[#9070e2] transition">Contact</a>
+        <button
+          onclick="toggleModal()"
+          class="border-2 border-[#AA96DD] text-[#9070e2] font-medium rounded-full px-4 py-2 hover:bg-[#AA96DD] hover:text-white transition hover:shadow-xl">
+          Say Hello
+        </button>
+      </div>
 
-    <!-- Logo -->
-    <a href="#home" class="flex items-center gap-3">
-      <img src="./assets/images/logo.png" alt="Logo" class="h-10" />
-      <span class="hidden sm:inline text-2xl font-semibold text-[#AA96DD]">
-        Kamran
-      </span>
-    </a>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center gap-8 font-medium text-gray-700">
-      <a href="#home" class="hover:text-[#9070e2] transition">Home</a>
-      <a href="#about" class="hover:text-[#9070e2] transition">About</a>
-      <a href="#skills" class="hover:text-[#9070e2] transition">Skills</a>
-      <a href="#projects" class="hover:text-[#9070e2] transition">Projects</a>
-      <a href="#contact" class="hover:text-[#9070e2] transition">Contact</a>
-      <button
-        onclick="toggleModal()"
-        class="border-2 border-[#AA96DD] text-[#9070e2] font-medium rounded-full px-4 py-2 hover:bg-[#AA96DD] hover:text-white transition hover:shadow-xl">
-        Say Hello
+      <button id="menu-btn" class="md:hidden text-gray-700 text-2xl p-2 rounded-lg hover:bg-gray-100/60 transition">
+        <i class="fas fa-bars"></i>
       </button>
     </div>
 
-    <!-- Mobile Hamburger -->
-    <button id="menu-btn" aria-label="Open menu" class="md:hidden text-gray-700 text-2xl p-2 rounded-lg hover:bg-gray-100/60 transition">
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+         class="fixed inset-0 bg-gradient-to-br from-[#AA96DD] to-[#9070e2] text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 flex flex-col items-center justify-center space-y-8 text-lg font-medium h-screen"
+         aria-hidden="true">
+      <button id="close-btn" class="absolute top-6 right-6 text-3xl text-white p-2 rounded-md hover:bg-white/10 transition">
+        <i class="fas fa-times"></i>
+      </button>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" aria-hidden="true"
-       class="fixed inset-0 h-screen bg-gradient-to-br from-[#AA96DD] to-[#9070e2] text-white transform translate-x-full transition-transform duration-500 ease-in-out z-50 flex flex-col items-center justify-center space-y-8 text-lg font-medium">
+      <div class="text-center space-y-2 mb-6">
+        <h3 class="text-3xl font-bold">Hey!</h3>
+        <p class="text-white/80">Let’s get around the site.</p>
+      </div>
 
-    <!-- Close -->
-    <button id="close-btn" aria-label="Close menu" class="absolute top-6 right-6 text-3xl text-white p-2 rounded-md hover:bg-white/10 transition">
-      <i class="fas fa-times"></i>
-    </button>
+      <nav class="flex flex-col items-center space-y-6">
+        <a href="#home" class="mobile-link opacity-0">Home</a>
+        <a href="#about" class="mobile-link opacity-0">About</a>
+        <a href="#skills" class="mobile-link opacity-0">Skills</a>
+        <a href="#projects" class="mobile-link opacity-0">Projects</a>
+        <a href="#contact" class="mobile-link opacity-0">Contact</a>
+      </nav>
 
-    <!-- Title -->
-    <div class="text-center space-y-2 mb-6 fade-up">
-      <h3 class="text-3xl font-bold">Hey!</h3>
-      <p class="text-white/80">Let’s get around the site.</p>
-    </div>
-
-    <!-- Links -->
-    <nav class="flex flex-col items-center space-y-6">
-      <a href="#home" class="mobile-link opacity-0">Home</a>
-      <a href="#about" class="mobile-link opacity-0">About</a>
-      <a href="#skills" class="mobile-link opacity-0">Skills</a>
-      <a href="#projects" class="mobile-link opacity-0">Projects</a>
-      <a href="#contact" class="mobile-link opacity-0">Contact</a>
-    </nav>
-
-    <!-- Button + Socials -->
-    <div class="mt-8 flex flex-col items-center gap-4">
-      <button onclick="toggleModal()" class="border-2 border-white rounded-full px-6 py-2 hover:bg-white hover:text-[#9070e2] transition">Say Hello</button>
-      <div class="flex items-center gap-4 mt-2 text-white/90">
-        <a href="mailto:manikrahuja4@gmail.com" class="p-2 rounded-md hover:bg-white/10 transition"><i class="fa-solid fa-envelope"></i></a>
-        <a href="https://github.com/manikrahuja4" target="_blank" class="p-2 rounded-md hover:bg-white/10 transition"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/kamran-khan-rahuja-52aa14201" target="_blank" class="p-2 rounded-md hover:bg-white/10 transition"><i class="fab fa-linkedin"></i></a>
+      <div class="mt-8 flex flex-col items-center gap-4">
+        <button onclick="toggleModal()" class="border-2 border-white rounded-full px-6 py-2 hover:bg-white hover:text-[#9070e2] transition">Say Hello</button>
+        <div class="flex items-center gap-4 mt-2 text-white/90">
+          <a href="mailto:manikrahuja4@gmail.com" class="p-2 rounded-md hover:bg-white/10 transition"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://github.com/manikrahuja4" target="_blank" class="p-2 rounded-md hover:bg-white/10 transition"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/kamran-khan-rahuja-52aa14201" target="_blank" class="p-2 rounded-md hover:bg-white/10 transition"><i class="fab fa-linkedin"></i></a>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
-
-<!-- Animations -->
-<style>
-  /* Ensure mobile menu is properly hidden initially */
-#mobile-menu {
-  display: none;
-}
-#mobile-menu.translate-x-0 {
-  display: flex;
-}
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  #mobile-menu.open .mobile-link {
-    animation: fadeInUp .5s ease forwards;
-  }
-  #mobile-menu.open .mobile-link:nth-child(1) { animation-delay: 0.1s; }
-  #mobile-menu.open .mobile-link:nth-child(2) { animation-delay: 0.2s; }
-  #mobile-menu.open .mobile-link:nth-child(3) { animation-delay: 0.3s; }
-  #mobile-menu.open .mobile-link:nth-child(4) { animation-delay: 0.4s; }
-  #mobile-menu.open .mobile-link:nth-child(5) { animation-delay: 0.5s; }
-</style>
-
-<!-- JS -->
-<script>
-  const menuBtn = document.getElementById("menu-btn");
-  const closeBtn = document.getElementById("close-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  function toggleMenu(open) {
-    if (open) {
-      mobileMenu.classList.remove("translate-x-full");
-      mobileMenu.classList.add("translate-x-0", "open");
-      mobileMenu.setAttribute("aria-hidden", "false");
-    } else {
-      mobileMenu.classList.remove("translate-x-0", "open");
-      mobileMenu.classList.add("translate-x-full");
-      mobileMenu.setAttribute("aria-hidden", "true");
-    }
-  }
-
-  menuBtn.addEventListener("click", () => toggleMenu(true));
-  closeBtn.addEventListener("click", () => toggleMenu(false));
-
-  document.querySelectorAll(".mobile-link").forEach(link => {
-    link.addEventListener("click", () => setTimeout(() => toggleMenu(false), 150));
-  });
-</script>
+  </nav>
 
 
 
@@ -627,7 +520,34 @@
         });
       });
     </script>
+ <!-- Scripts at bottom -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("menu-btn");
+      const closeBtn = document.getElementById("close-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
 
+      function toggleMenu(open) {
+        if (open) {
+          mobileMenu.classList.remove("translate-x-full");
+          mobileMenu.classList.add("translate-x-0", "open");
+          mobileMenu.setAttribute("aria-hidden", "false");
+        } else {
+          mobileMenu.classList.remove("translate-x-0", "open");
+          mobileMenu.classList.add("translate-x-full");
+          mobileMenu.setAttribute("aria-hidden", "true");
+        }
+      }
+
+      menuBtn?.addEventListener("click", () => toggleMenu(true));
+      closeBtn?.addEventListener("click", () => toggleMenu(false));
+      document.querySelectorAll(".mobile-link").forEach(link => {
+        link.addEventListener("click", () => {
+          setTimeout(() => toggleMenu(false), 150);
+        });
+      });
+    });
+  </script>
     <!-- FontAwesome (icons) -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
