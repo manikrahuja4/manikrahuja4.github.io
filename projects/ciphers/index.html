@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classic Cipher Learning Platform</title>
 <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 <script>
   tailwind.config = { darkMode: 'media' };
 </script>
@@ -23,7 +30,7 @@
   <!-- Header -->
   <header class="bg-white dark:bg-gray-800 shadow-md">
     <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between">
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">Classic Cipher Platform</h1>
+      <h1 class="text-3xl sm:text-2xl font-extrabold text-gray-900 dark:text-white">Classic Cipher</h1>
       <p class="mt-2 sm:mt-0 text-gray-600 dark:text-gray-300">Learn Caesar, Rail Fence, & Playfair step by step</p>
     </div>
   </header>
@@ -63,8 +70,21 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-6 text-center mt-auto">
-    &copy; 2026 Classic Cipher Learning Platform | Made for Students
+  <footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 p-4 flex justify-between items-center text-center mt-auto">
+      <!-- Bottom row: Social links and copyright -->
+      <!-- <div class="px-4 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-6"> -->
+          <div class="flex justify-center md:justify-start items-center gap-4">
+              <a href="https://www.linkedin.com/in/kamran-khan-rahuja-52aa14201" target="_blank" aria-label="LinkedIn" class="p-2 hover:opacity-80">
+                  <i class="fa-brands fa-linkedin text-xl text-white"></i>
+                </a>
+                <a href="mailto:manikrahuja4@gmail.com" aria-label="Email" class="p-2 hover:opacity-80">
+                    <i class="fa-solid fa-envelope text-xl text-white"></i>
+                </a>
+            </div>
+                <div class="flex flex-col items-center md:items-end text-center md:text-right gap-2">
+                    <p class="text-sm text-white/80">© 2025 Kamran Rahuja — Designed & developed with care.</p>
+                </div>
+            <!-- </div> -->
   </footer>
 
 </body>
