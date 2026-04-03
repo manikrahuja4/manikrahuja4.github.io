@@ -366,8 +366,8 @@
 
     .grid-pattern {
       background-image: 
-        linear-gradient(rgba(170, 150, 221, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(170, 150, 221, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(170, 150, 221, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(170, 150, 221, 0.07) 1px, transparent 1px);
       background-size: 40px 40px;
     }
     body.dark .grid-pattern {
@@ -397,13 +397,24 @@
 
     .cursor-glow {
       position: fixed;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(170, 150, 221, 0.1) 0%, transparent 70%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(170, 150, 221, 0.2) 0%, transparent 70%);
       pointer-events: none;
       transform: translate(-50%, -50%);
       z-index: 0;
       transition: opacity 0.3s ease;
+    }
+
+    /* Theme Toggle Smoothness */
+    .dark-mode-icon {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #darkModeToggle, #darkModeToggleMobile {
+      transition: all 0.2s ease;
+    }
+    #darkModeToggle:active, #darkModeToggleMobile:active {
+      transform: scale(0.9);
     }
 
     .tag-pill {
@@ -701,9 +712,9 @@
     
     <!-- Animated Background Blobs -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute top-20 -left-20 w-96 h-96 bg-purple-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-      <div class="absolute top-40 -right-20 w-96 h-96 bg-pink-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-      <div class="absolute -bottom-20 left-1/3 w-96 h-96 bg-purple-200/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+      <div class="absolute top-20 -left-20 w-96 h-96 bg-purple-300/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div class="absolute top-40 -right-20 w-96 h-96 bg-pink-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-20 left-1/3 w-96 h-96 bg-purple-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
     </div>
     
     <!-- Grid Pattern Overlay -->
@@ -722,7 +733,7 @@
         
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
           <span class="hero-title-line block">Hi, I'm</span>
-          <span class="hero-title-line block font-extrabold" style="background: linear-gradient(90deg, #9070e2, #AA96DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Kamran Rahuja</span>
+          <span class="hero-title-line block font-extrabold pb-2" style="background: linear-gradient(90deg, #9070e2, #AA96DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Kamran Rahuja</span>
           <span class="hero-title-line block text-2xl md:text-3xl lg:text-4xl font-semibold mt-2">
             <span id="typingText" class="typing-text"></span>
           </span>
@@ -798,6 +809,9 @@
 
   <!-- ABOUT SECTION -->
   <section id="about" class="dark-about-bg bg-gradient-to-br from-[#AA96DD] to-[#9070e2] py-24 px-4 relative overflow-hidden">
+    <!-- Grid Pattern -->
+    <div class="absolute inset-0 grid-pattern opacity-30 pointer-events-none"></div>
+    
     <!-- Decorative Elements -->
     <div class="absolute top-10 left-10 w-40 h-40 border border-white/10 rounded-full animate-spin-slow"></div>
     <div class="absolute bottom-10 right-10 w-32 h-32 border border-white/10 rounded-full animate-spin-slow" style="animation-direction: reverse;"></div>
@@ -1284,6 +1298,9 @@
 
   <!-- CONTACT CTA SECTION -->
   <section id="contact" class="py-24 px-4 relative">
+    <!-- Grid Pattern Overlay -->
+    <div class="absolute inset-0 grid-pattern opacity-20 pointer-events-none"></div>
+    
     <div class="max-w-4xl mx-auto reveal-section">
       <div class="dark-contact-bg bg-[#f6f2fd] rounded-3xl px-8 py-14 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left border border-[#e5dfff] dark:border relative overflow-hidden">
         <div class="absolute -top-12 -right-12 w-48 h-48 bg-[#AA96DD]/10 rounded-full"></div>
@@ -1506,15 +1523,30 @@
 
     function updateDarkModeIcons(isDark) {
       document.querySelectorAll('.dark-mode-icon').forEach(icon => {
-        icon.className = isDark ? 'fas fa-sun text-yellow-400 text-lg dark-mode-icon' : 'fas fa-moon text-gray-700 text-lg dark-mode-icon';
+        // Use classList for cleaner toggling and to preserve other classes
+        if (isDark) {
+          icon.classList.remove('fa-moon', 'text-gray-700');
+          icon.classList.add('fa-sun', 'text-yellow-400');
+        } else {
+          icon.classList.remove('fa-sun', 'text-yellow-400');
+          icon.classList.add('fa-moon', 'text-gray-700');
+        }
+        icon.classList.add('fa-fw'); // Fixed width to prevent jumping
       });
     }
 
+    // Consolidated Component Initializer
     document.addEventListener('DOMContentLoaded', () => {
+      // Core Branding & Logic
       initDarkMode();
       typeWriter();
-      document.getElementById('darkModeToggle')?.addEventListener('click', toggleDarkMode);
-      document.getElementById('darkModeToggleMobile')?.addEventListener('click', toggleDarkMode);
+
+      // Event Listeners for Theme Toggles
+      const desktopToggle = document.getElementById('darkModeToggle');
+      const mobileToggle = document.getElementById('darkModeToggleMobile');
+      
+      desktopToggle?.addEventListener('click', toggleDarkMode);
+      mobileToggle?.addEventListener('click', toggleDarkMode);
     });
 
     // Navbar scroll shadow
@@ -1731,12 +1763,6 @@
     });
   </script>
 
-  <!-- FontAwesome (icons) -->
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"
-    integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
+  <!-- FontAwesome (CSS used in <head>, JS not needed for class toggling) -->
 </body>
 </html>
