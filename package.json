@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "tailwind.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:css": "npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/tailwind-output.css --minify",
+    "watch:css": "npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/tailwind-output.css --watch"
   },
   "repository": {
     "type": "git",
@@ -21,8 +22,5 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19"
-  },
-  "dependencies": {
-    "@tailwindcss/cli": "^4.1.18"
   }
 }
