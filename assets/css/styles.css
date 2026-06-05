@@ -1,4 +1,4 @@
-﻿    html { scroll-behavior: smooth; font-family: "Poppins", sans-serif; }
+    html { scroll-behavior: smooth; font-family: "Poppins", sans-serif; }
     body { margin: 0; padding: 0; font-family: "Poppins", sans-serif; overflow-x: hidden; }
     /* Removed empty rulesets */
 
@@ -55,8 +55,9 @@
     .hero-content > *:nth-child(3) { animation: fadeIn 0.6s ease forwards 0.6s; opacity: 0; }
     .hero-content > *:nth-child(4) { animation: fadeIn 0.6s ease forwards 0.8s; opacity: 0; }
 
-    .nav-link-active { color: #9070e2 !important; position: relative; }
-    .nav-link-active::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px; background: #AA96DD; border-radius: 1px; }
+    .nav-link-active { color: #9070e2 !important; position: relative; text-shadow: 0 0 8px rgba(144, 112, 226, 0.3); }
+    body.dark .nav-link-active { color: #AA96DD !important; text-shadow: 0 0 8px rgba(170, 150, 221, 0.4); }
+    .nav-link-active::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #9070e2, #AA96DD); border-radius: 2px; transform: scaleX(1); }
 
     .reveal-section { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal-section.revealed { opacity: 1; transform: translateY(0); }
@@ -134,8 +135,8 @@
     .dark-border { border-color: #e5e7eb; }
     body.dark .dark-border { border-color: #2a2a4a; }
     
-    .dark-nav-bg { background-color: rgba(255, 255, 255, 0.7); border-bottom: 1px solid rgba(170, 150, 221, 0.1); }
-    body.dark .dark-nav-bg { background-color: rgba(15, 15, 26, 0.7); border-bottom: 1px solid rgba(170, 150, 221, 0.05); }
+    .dark-nav-bg { background-color: rgba(255, 255, 255, 0.75); border-bottom: 1px solid transparent; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(170, 150, 221, 0.15); }
+    body.dark .dark-nav-bg { background-color: rgba(15, 15, 26, 0.75); border-bottom: 1px solid transparent; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(170, 150, 221, 0.1); }
     
     .dark-tag-bg { background-color: #f3f4f6 !important; color: #6b7280 !important; }
     body.dark .dark-tag-bg { background-color: #2a2a4a !important; color: #c0c0d0 !important; }
@@ -317,25 +318,7 @@
       background: rgba(255, 255, 255, 0.25);
     }
 
-    .nav-links .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .nav-links .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: #AA96DD;
-      transition: all 0.3s ease;
-      transform: translateX(-50%);
-    }
-    .nav-links .nav-link-active::after {
-      width: 100%;
-      bottom: -8px;
-    }
+
 
     .social-icon {
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -446,9 +429,7 @@
     }
     .gradient-border:hover::before { opacity: 1; }
 
-    .nav-link {
-      transition: color 0.3s ease, transform 0.3s ease !important;
-    }
+
 
     .btn-primary, .btn-secondary {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -466,10 +447,37 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .nav-link { color: #4b5563; font-weight: 500; }
+    .nav-link { 
+      position: relative;
+      color: #4b5563; 
+      font-weight: 500; 
+      transition: color 0.3s ease, text-shadow 0.3s ease !important;
+    }
     body.dark .nav-link { color: #e5e7eb; }
-    .nav-link:hover { color: #9070e2; transform: translateY(-1px); }
-    body.dark .nav-link:hover { color: #AA96DD; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #9070e2, #AA96DD);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover { 
+      color: #9070e2; 
+      text-shadow: 0 0 8px rgba(144, 112, 226, 0.3);
+    }
+    body.dark .nav-link:hover { 
+      color: #AA96DD; 
+      text-shadow: 0 0 8px rgba(170, 150, 221, 0.4);
+    }
+    .nav-link:hover::after {
+      transform: scaleX(1);
+    }
 
     .mobile-menu {
       height: 100vh !important;

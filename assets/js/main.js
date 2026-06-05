@@ -52,7 +52,15 @@
 
     // Dark Mode Toggle
     function initDarkMode() {
-      const isDark = localStorage.getItem('darkMode') === 'true';
+      const savedMode = localStorage.getItem('darkMode');
+      let isDark;
+      if (savedMode !== null) {
+        isDark = savedMode === 'true';
+      } else {
+        // System preference
+        isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      
       if (isDark) {
         document.body.classList.add('dark');
         updateDarkModeIcons(true);
@@ -306,4 +314,116 @@
           });
         }
       });
+    });
+
+    // Project Filtering
+    document.addEventListener("DOMContentLoaded", () => {
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterBtns.forEach(b => {
+            b.classList.remove("active", "bg-[#AA96DD]", "text-white");
+            b.classList.add("bg-gray-100", "text-gray-600");
+          });
+          
+          // Add active class to clicked button
+          btn.classList.add("active", "bg-[#AA96DD]", "text-white");
+          btn.classList.remove("bg-gray-100", "text-gray-600");
+
+          const filterValue = btn.getAttribute("data-filter");
+
+          projectCards.forEach(card => {
+            if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
+              card.style.display = "block";
+              setTimeout(() => {
+                card.style.opacity = "1";
+                card.style.transform = "scale(1)";
+              }, 10);
+            } else {
+              card.style.opacity = "0";
+              card.style.transform = "scale(0.8)";
+              setTimeout(() => {
+                if (card.style.opacity === "0") {
+                  card.style.display = "none";
+                }
+              }, 300);
+            }
+          });
+        });
+      });
+    });
+
+    // AJAX Contact Form Submission
+    document.addEventListener("DOMContentLoaded", () => {
+      const contactForm = document.getElementById("contactForm");
+      const toast = document.getElementById("toast");
+      
+      if (contactForm) {
+        contactForm.addEventListener("submit", function(e) {
+          e.preventDefault(); // Prevent default redirection
+          
+          const submitBtn = contactForm.querySelector('button[type="submit"]');
+          const originalBtnText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<span class="flex items-center justify-center gap-2"><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
+          submitBtn.disabled = true;
+
+          const formData = new FormData(contactForm);
+          const ajaxUrl = contactForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+          fetch(ajaxUrl, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              showToast("Message sent successfully!");
+              contactForm.reset();
+              setTimeout(() => {
+                toggleModal(); // Close modal after 2 seconds
+              }, 2000);
+            } else {
+              showToast("Oops! There was a problem submitting your form", false);
+            }
+          }).catch(error => {
+            showToast("Oops! There was a problem submitting your form", false);
+          }).finally(() => {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+          });
+        });
+      }
+      
+      function showToast(message, isSuccess = true) {
+        if (!toast) return;
+        const toastMsg = document.getElementById("toastMessage");
+        const iconContainer = document.getElementById("toastIconContainer");
+        const icon = document.getElementById("toastIcon");
+        
+        toastMsg.textContent = message;
+        
+        if (!isSuccess) {
+          iconContainer.classList.remove("bg-green-500/20", "text-green-400");
+          iconContainer.classList.add("bg-red-500/20", "text-red-400");
+          icon.classList.remove("fa-check");
+          icon.classList.add("fa-exclamation");
+        } else {
+          iconContainer.classList.remove("bg-red-500/20", "text-red-400");
+          iconContainer.classList.add("bg-green-500/20", "text-green-400");
+          icon.classList.remove("fa-exclamation");
+          icon.classList.add("fa-check");
+        }
+        
+        toast.classList.remove("translate-y-20", "opacity-0");
+        toast.classList.add("translate-y-0", "opacity-100");
+        
+        setTimeout(() => {
+          toast.classList.remove("translate-y-0", "opacity-100");
+          toast.classList.add("translate-y-20", "opacity-0");
+        }, 3000);
+      }
     });

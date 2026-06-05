@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -442,17 +442,25 @@
           Explore my recent projects that showcase my skills in web development and design
         </p>
         <div class="section-divider"></div>
+        
+        <!-- Project Filters -->
+        <div class="flex flex-wrap justify-center gap-3 mt-8 mb-4" id="project-filters">
+          <button class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-[#AA96DD] text-white shadow-md" data-filter="all">All</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-gray-100 text-gray-600 dark-bg-white hover:bg-[#AA96DD] hover:text-white" data-filter="web">Web & Landing Pages</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-gray-100 text-gray-600 dark-bg-white hover:bg-[#AA96DD] hover:text-white" data-filter="apps">Apps</button>
+          <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-gray-100 text-gray-600 dark-bg-white hover:bg-[#AA96DD] hover:text-white" data-filter="tools">Tools & Utilities</button>
+        </div>
       </div>
 
       <!-- Projects Grid -->
       <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         <!-- Ciphers Visualizer -->
-        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-1 gradient-border">
+        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-1 gradient-border" data-category="tools">
           <div class="relative overflow-hidden">
             <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 project-badge backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-              <i class="fa-solid fa-shield-halved text-[#AA96DD]"></i> Cryptography
+              <i class="fa-solid fa-shield-halved text-[#AA96DD]" aria-hidden="true"></i> Cryptography
             </div>
-            <img src="./assets/images/ciphersProject.jpeg" alt="Ciphers Project" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
+            <img src="./assets/images/ciphersProject.jpeg" alt="Ciphers Project" loading="lazy" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-6">
               <a href="./projects/ciphers/index.html" target="_blank" class="btn-primary px-6 py-2.5 rounded-full font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                 <span class="flex items-center gap-2">
@@ -476,12 +484,12 @@
         </div>
 
         <!-- Movie Search -->
-        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-2 gradient-border">
+        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-2 gradient-border" data-category="web">
           <div class="relative overflow-hidden">
             <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 project-badge backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-              <i class="fa-solid fa-film text-purple-500"></i> Entertainment
+              <i class="fa-solid fa-film text-purple-500" aria-hidden="true"></i> Entertainment
             </div>
-            <img src="./assets/images/movieSearch.jpeg" alt="Movie Search Project" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
+            <img src="./assets/images/movieSearch.jpeg" alt="Movie Search Project" loading="lazy" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-6">
               <a href="./projects/movieSearch/index.html" target="_blank" class="btn-primary px-6 py-2.5 rounded-full font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                 <span class="flex items-center gap-2">
@@ -505,12 +513,12 @@
         </div>
 
         <!-- Maverick Dresses -->
-        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-3 gradient-border">
+        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-3 gradient-border" data-category="web">
           <div class="relative overflow-hidden">
             <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 project-badge backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-              <i class="fa-solid fa-bag-shopping text-pink-500"></i> E-commerce
+              <i class="fa-solid fa-bag-shopping text-pink-500" aria-hidden="true"></i> E-commerce
             </div>
-            <img src="./assets/images/maverick-dresses.jpeg" alt="Maverick Dresses" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
+            <img src="./assets/images/maverick-dresses.jpeg" alt="Maverick Dresses" loading="lazy" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-6">
               <a href="./projects/maverick-dresses/index.html" target="_blank" class="btn-primary px-6 py-2.5 rounded-full font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                 <span class="flex items-center gap-2">
@@ -533,12 +541,12 @@
         </div>
 
         <!-- SoccerVerse -->
-        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-4 gradient-border">
+        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-4 gradient-border" data-category="web">
           <div class="relative overflow-hidden">
             <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 project-badge backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-              <i class="fa-solid fa-futbol text-green-500"></i> Sports
+              <i class="fa-solid fa-futbol text-green-500" aria-hidden="true"></i> Sports
             </div>
-            <img src="./assets/images/soccerverse.jpeg" alt="SoccerVerse" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
+            <img src="./assets/images/soccerverse.jpeg" alt="SoccerVerse" loading="lazy" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-6">
               <a href="./projects/soccerverse/index.html" target="_blank" class="btn-primary px-6 py-2.5 rounded-full font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                 <span class="flex items-center gap-2">
@@ -562,12 +570,12 @@
         </div>
 
         <!-- Music Player -->
-        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-5 gradient-border">
+        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-5 gradient-border" data-category="web">
           <div class="relative overflow-hidden">
             <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 project-badge backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-              <i class="fa-solid fa-music text-blue-500"></i> Multimedia
+              <i class="fa-solid fa-music text-blue-500" aria-hidden="true"></i> Multimedia
             </div>
-            <img src="./assets/images/musicPlayer.jpeg" alt="Music Player" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
+            <img src="./assets/images/musicPlayer.jpeg" alt="Music Player" loading="lazy" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-6">
               <a href="./projects/musicPlayer/index.html" target="_blank" class="btn-primary px-6 py-2.5 rounded-full font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                 <span class="flex items-center gap-2">
@@ -591,12 +599,12 @@
         </div>
 
         <!-- ShowroomOS -->
-        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-5 gradient-border">
+        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-5 gradient-border" data-category="apps">
           <div class="relative overflow-hidden">
             <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 project-badge backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-              <i class="fa-solid fa-car-side text-indigo-500"></i> Management OS
+              <i class="fa-solid fa-car-side text-indigo-500" aria-hidden="true"></i> Management OS
             </div>
-            <img src="./assets/images/showroomos.jpg" alt="ShowroomOS" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
+            <img src="./assets/images/showroomos.jpg" alt="ShowroomOS" loading="lazy" class="w-full h-52 object-cover project-image transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-6">
               <a href="https://showroomx.netlify.app" target="_blank" class="btn-primary px-6 py-2.5 rounded-full font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                 <span class="flex items-center gap-2">
@@ -622,10 +630,10 @@
         </div>
 
         <!-- Counter App -->
-        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-6 gradient-border">
+        <div class="project-card dark-project-bg dark-card-shadow group bg-white rounded-2xl overflow-hidden border border-gray-200 transition-all duration-500 reveal-section stagger-6 gradient-border" data-category="tools">
           <div class="relative overflow-hidden">
             <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 project-badge backdrop-blur-sm px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
-              <i class="fa-solid fa-calculator text-orange-500"></i> Utility
+              <i class="fa-solid fa-calculator text-orange-500" aria-hidden="true"></i> Utility
             </div>
             <div class="w-full h-52 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center relative">
               <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyIi8+PC9nPjwvZz48L3N2Zz4=')] opacity-50"></div>
@@ -906,7 +914,7 @@
         <h2 class="text-2xl font-bold text-[#AA96DD] mb-2">Let's Talk</h2>
         <p class="text-sm dark-text-gray text-gray-600">Got a message for me? Drop it below and I'll respond soon!</p>
       </div>
-      <form action="https://formsubmit.co/04eed94ec7433a126b78334748df7fa1" method="POST" class="space-y-4">
+      <form id="contactForm" action="https://formsubmit.co/04eed94ec7433a126b78334748df7fa1" method="POST" class="space-y-4">
         <input type="hidden" name="_subject" value="New Message from Portfolio Contact Form" />
         <input type="hidden" name="_next" value="https://manikrahuja4.github.io" />
         <input type="hidden" name="_captcha" value="false" />
@@ -931,9 +939,17 @@
     </div>
   </div>
 
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-gray-900 text-white px-6 py-4 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.5)] border border-gray-700" style="z-index: 99999; min-width: 280px; justify-content: center;">
+    <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400" id="toastIconContainer">
+      <i class="fas fa-check" id="toastIcon"></i>
+    </div>
+    <span class="font-semibold text-white tracking-wide" id="toastMessage">Message sent successfully!</span>
+  </div>
+
   <!-- SCRIPTS -->
   <script src="assets/js/main.js"></script>
 
-  <!-- FontAwesome (CSS used in <head>, JS not needed for class toggling) -->
+  <!-- FontAwesome -->
 </body>
 </html>
