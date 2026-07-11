@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windward Wings — a bird math adventure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@500;700;800&display=swap');
+
+  :root{
+    --cream:#FFF8ED;
+    --ink:#2A2A28;
+    --dawn-top:#FFD9A8;
+    --dawn-bottom:#8FCBE8;
+    --noon-top:#8FCBE8;
+    --noon-bottom:#CFE8B0;
+    --sunset-top:#FF9E5E;
+    --sunset-bottom:#E85D75;
+    --night-top:#16233E;
+    --night-bottom:#2C4770;
+    --accent-add:#E85D75;
+    --accent-sub:#5F8F4E;
+    --accent-mul:#D9720F;
+    --accent-div:#7EC8E3;
+    --leaf:#7A9B5C;
+    --sun:#FFC857;
+    --wood:#8B5E3C;
+    --shadow: rgba(30,25,15,0.18);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding: 18px 12px 40px;
+  }
+  h1,h2,h3, .display{ font-family:'Baloo 2', sans-serif; }
+
+  #app{ width:100%; max-width:760px; }
+
+  .screen{ display:none; }
+  .screen.active{ display:block; animation: fadein .4s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  /* ---------- MENU ---------- */
+  .menu-header{ text-align:center; margin-bottom: 22px; }
+  .menu-header h1{ font-size: clamp(28px,6vw,42px); margin:0 0 4px; color:#3C4A2E; }
+  .menu-header p{ margin:0; color:#6b6a63; font-size:15px; }
+
+  .seed-badge{
+    position:absolute; top:18px; right:18px;
+    background:var(--wood); color:#FFF3DC;
+    font-family:'Baloo 2'; font-weight:700; font-size:14px;
+    padding:7px 14px 7px 12px; border-radius:999px;
+    display:flex; align-items:center; gap:6px;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+  }
+  .seed-badge svg{ width:16px; height:16px; }
+
+  .card-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+    gap:16px;
+  }
+  .op-card{
+    position:relative;
+    border:none; cursor:pointer;
+    border-radius:20px;
+    padding:20px 16px 16px;
+    text-align:left;
+    color:#fff;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.15), 0 10px 18px rgba(0,0,0,0.12);
+    transition: transform .15s ease, box-shadow .15s ease;
+    overflow:hidden;
+  }
+  .op-card:hover{ transform: translateY(-3px); }
+  .op-card:active{ transform: translateY(1px); box-shadow: 0 3px 0 rgba(0,0,0,0.15); }
+  .op-card.add{ background: linear-gradient(160deg, #FFC48A, #E85D75); }
+  .op-card.sub{ background: linear-gradient(160deg, #9FD5A6, #4E7A4B); }
+  .op-card.mul{ background: linear-gradient(160deg, #FFB25E, #D9720F); }
+  .op-card.div{ background: linear-gradient(160deg, #3E5C86, #16233E); }
+  .op-symbol{ font-family:'Baloo 2'; font-size:38px; font-weight:800; line-height:1; }
+  .op-name{ font-weight:800; font-size:17px; margin-top:4px; }
+  .op-sub{ font-size:12px; opacity:0.85; margin-top:2px; }
+  .op-stars{ margin-top:12px; font-size:15px; letter-spacing:2px; }
+  .op-stars .dim{ opacity:.35; }
+
+  /* ---------- GAME ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:10px; gap:8px; flex-wrap:wrap;
+  }
+  .back-btn{
+    border:none; background:rgba(0,0,0,0.08); color:var(--ink);
+    font-family:'Nunito'; font-weight:700; font-size:13px;
+    padding:8px 14px; border-radius:999px; cursor:pointer;
+  }
+  .stat-pill{
+    background:rgba(0,0,0,0.08); border-radius:999px;
+    padding:6px 12px; font-size:13px; font-weight:700;
+    display:flex; align-items:center; gap:5px;
+  }
+  .stat-row{ display:flex; gap:8px; flex-wrap:wrap; }
+
+  .scene-wrap{
+    position:relative; border-radius:22px; overflow:hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .scene-wrap svg{ display:block; width:100%; height:auto; }
+
+  .toast{
+    position:absolute; top:14px; left:50%; transform:translate(-50%,-140%);
+    background:#2A2A28; color:#fff; font-weight:700; font-size:13px;
+    padding:8px 16px; border-radius:999px; opacity:0;
+    transition: transform .4s ease, opacity .4s ease;
+    pointer-events:none; white-space:nowrap;
+  }
+  .toast.show{ transform:translate(-50%,0); opacity:1; }
+
+  .question-panel{ margin-top: -14px; position:relative; z-index:2; }
+  .question-card{
+    background:#fff; border-radius:20px; margin: 0 auto;
+    max-width:340px; padding:16px 20px; text-align:center;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.08), 0 12px 20px rgba(0,0,0,0.08);
+  }
+  .question-card.shake{ animation: shake .4s ease; }
+  @keyframes shake{ 10%,90%{transform:translateX(-2px);} 20%,80%{transform:translateX(4px);} 30%,50%,70%{transform:translateX(-8px);} 40%,60%{transform:translateX(8px);} }
+  .q-label{ font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#9a9890; font-weight:700; }
+  .q-expr{ font-family:'Baloo 2'; font-size: clamp(30px,7vw,40px); font-weight:800; margin:4px 0 2px; }
+
+  .options-row{
+    display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap;
+  }
+  .opt-btn{
+    font-family:'Baloo 2'; font-size:22px; font-weight:700;
+    background:#fff; border: 2.5px solid #EADFCB; color:var(--ink);
+    padding:12px 0; width:84px; border-radius:16px; cursor:pointer;
+    box-shadow: 0 4px 0 #EADFCB;
+    transition: transform .1s ease;
+  }
+  .opt-btn:hover{ border-color:#D8CBA9; }
+  .opt-btn:active{ transform: translateY(2px); box-shadow:none; }
+  .opt-btn.correct{ background:#DDEFC7; border-color:#7A9B5C; box-shadow:0 4px 0 #7A9B5C; color:#3C4A2E; }
+  .opt-btn.wrong{ background:#F7D6D6; border-color:#D96464; box-shadow:0 4px 0 #D96464; color:#7A2323; }
+  .opt-btn:disabled{ cursor:default; }
+
+  /* ---------- COMPLETE OVERLAY ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(20,18,12,0.55);
+    display:flex; align-items:center; justify-content:center; z-index:50;
+    padding:20px;
+  }
+  .overlay.hidden{ display:none; }
+  .complete-card{
+    background:#fff; border-radius:24px; padding:30px 26px; text-align:center;
+    max-width:340px; width:100%;
+    box-shadow: 0 14px 0 rgba(0,0,0,0.1);
+  }
+  .complete-card h2{ margin:6px 0 2px; font-size:26px; }
+  .stars-big{ font-size:44px; letter-spacing:6px; margin:10px 0; }
+  .stars-big .dim{ opacity:.25; }
+  .complete-stats{ color:#726f66; font-size:14px; margin-bottom:18px; }
+  .btn-row{ display:flex; flex-direction:column; gap:10px; }
+  .btn-primary, .btn-secondary{
+    font-family:'Baloo 2'; font-weight:700; font-size:15px;
+    border:none; border-radius:14px; padding:12px; cursor:pointer;
+  }
+  .btn-primary{ background:var(--leaf); color:#fff; box-shadow:0 4px 0 #56713F; }
+  .btn-primary:active{ transform:translateY(3px); box-shadow:none; }
+  .btn-secondary{ background:#F0EDE3; color:var(--ink); }
+  .btn-secondary:active{ transform:translateY(1px); }
+
+  /* bird + scenery */
+  .cloud{ opacity:0.85; }
+  @keyframes drift{ from{ transform:translateX(-40px);} to{ transform:translateX(820px);} }
+  .cloud-1{ animation: drift 46s linear infinite; }
+  .cloud-2{ animation: drift 64s linear infinite; animation-delay:-20s; }
+  .cloud-3{ animation: drift 55s linear infinite; animation-delay:-8s; }
+
+  #birdGroup{ transition: transform .7s cubic-bezier(.4,1.4,.6,1); }
+  .wing{ transform-origin: 0px 0px; animation: flap 0.5s ease-in-out infinite alternate; }
+  @keyframes flap{ from{ transform:rotate(-18deg);} to{ transform:rotate(22deg);} }
+  #birdGroup.sad .wing{ animation: none; transform:rotate(6deg); }
+  #birdGroup.sad #birdBody{ transform: rotate(-8deg); }
+
+  .star-twinkle{ animation: twinkle 2.4s ease-in-out infinite; }
+  @keyframes twinkle{ 0%,100%{opacity:0.25;} 50%{opacity:1;} }
+
+  @media (prefers-reduced-motion: reduce){
+    .cloud-1,.cloud-2,.cloud-3,.wing,.star-twinkle{ animation: none !important; }
+  }
+
+  .hidden{ display:none !important; }
+  .center-note{ text-align:center; color:#8a887e; font-size:12px; margin-top:14px; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- MENU SCREEN -->
+  <div class="screen active" id="menu-screen" style="position:relative;">
+    <div class="seed-badge">
+      <svg viewBox="0 0 24 24" fill="#FFC857"><ellipse cx="12" cy="12" rx="6" ry="9"/></svg>
+      <span id="totalSeeds">0</span>
+    </div>
+    <div class="menu-header">
+      <h1>Windward Wings</h1>
+      <p>Help your bird migrate by solving problems along the way</p>
+    </div>
+    <div class="card-grid">
+      <button class="op-card add" data-op="+">
+        <div class="op-symbol">+</div>
+        <div class="op-name">Sunrise Shore</div>
+        <div class="op-sub">Addition</div>
+        <div class="op-stars" data-stars-for="+">☆☆☆</div>
+      </button>
+      <button class="op-card sub" data-op="-">
+        <div class="op-symbol">−</div>
+        <div class="op-name">Meadow Noon</div>
+        <div class="op-sub">Subtraction</div>
+        <div class="op-stars" data-stars-for="-">☆☆☆</div>
+      </button>
+      <button class="op-card mul" data-op="×">
+        <div class="op-symbol">×</div>
+        <div class="op-name">Sunset Peaks</div>
+        <div class="op-sub">Multiplication</div>
+        <div class="op-stars" data-stars-for="×">☆☆☆</div>
+      </button>
+      <button class="op-card div" data-op="÷">
+        <div class="op-symbol">÷</div>
+        <div class="op-name">Starlit Sky</div>
+        <div class="op-sub">Division</div>
+        <div class="op-stars" data-stars-for="÷">☆☆☆</div>
+      </button>
+    </div>
+    <p class="center-note">Answer 15 questions to fly home to the Grand Nest in each land.</p>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div class="screen" id="game-screen">
+    <div class="topbar">
+      <button class="back-btn" id="backBtn">← Back to map</button>
+      <div class="stat-row">
+        <div class="stat-pill" id="islandLabel">Island 1 of 3</div>
+        <div class="stat-pill">🔥 <span id="streakVal">0</span></div>
+        <div class="stat-pill">🌾 <span id="runSeeds">0</span></div>
+      </div>
+    </div>
+
+    <div class="scene-wrap" id="sceneWrap">
+      <div class="toast" id="toast"></div>
+      <svg id="sceneSvg" viewBox="0 0 800 340" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+
+    <div class="question-panel">
+      <div class="question-card" id="questionCard">
+        <div class="q-label">Solve it</div>
+        <div class="q-expr" id="qExpr">7 + 5 = ?</div>
+        <div class="options-row" id="optionsRow"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETE OVERLAY -->
+  <div class="overlay hidden" id="completeOverlay">
+    <div class="complete-card">
+      <div style="font-size:36px;">🪺</div>
+      <h2>Grand Nest reached!</h2>
+      <div class="stars-big" id="finalStars">★★★</div>
+      <div class="complete-stats" id="finalStats">15 of 15 correct · +150 seeds</div>
+      <div class="btn-row">
+        <button class="btn-primary" id="flyAgainBtn">Fly this route again</button>
+        <button class="btn-secondary" id="chooseOtherBtn">Choose another land</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var OPS = {
+    "+": { name:"Sunrise Shore", theme:"add", accent:"var(--accent-add)" },
+    "-": { name:"Meadow Noon",   theme:"sub", accent:"var(--accent-sub)" },
+    "×": { name:"Sunset Peaks",  theme:"mul", accent:"var(--accent-mul)" },
+    "÷": { name:"Starlit Sky",   theme:"div", accent:"var(--accent-div)" }
+  };
+  var THEME_COLORS = {
+    add: ["#FFD9A8","#8FCBE8"],
+    sub: ["#8FCBE8","#CFE8B0"],
+    mul: ["#FF9E5E","#E85D75"],
+    div: ["#16233E","#2C4770"]
+  };
+  var TOTAL_NEEDED = 15;
+  var PER_LEVEL = 5;
+
+  var state = {
+    op: null,
+    correctCount: 0,
+    attempts: 0,
+    correctAttempts: 0,
+    streak: 0,
+    runSeeds: 0,
+    current: null,
+    locked: false
+  };
+  var totalSeeds = 0;
+  var bestStars = { "+":0, "-":0, "×":0, "÷":0 };
+
+  function randInt(min, max){ return Math.floor(Math.random()*(max-min+1))+min; }
+
+  function currentLevel(){
+    return Math.min(3, Math.floor(state.correctCount / PER_LEVEL) + 1);
+  }
+
+  function generateQuestion(op, level){
+    var a,b,answer,text;
+    if(op === "+"){
+      var rA = [[1,10],[10,30],[20,60]][level-1];
+      a = randInt(rA[0], rA[1]); b = randInt(rA[0], rA[1]);
+      answer = a+b; text = a + " + " + b;
+    } else if(op === "-"){
+      var rS = [[1,10],[10,30],[20,60]][level-1];
+      a = randInt(rS[0], rS[1]); b = randInt(rS[0], a);
+      answer = a-b; text = a + " − " + b;
+    } else if(op === "×"){
+      var rM = [[1,5],[2,9],[3,12]][level-1];
+      a = randInt(rM[0], rM[1]); b = randInt(rM[0], rM[1]);
+      answer = a*b; text = a + " × " + b;
+    } else {
+      var rD = [[1,5],[2,9],[3,12]][level-1];
+      b = randInt(rD[0], rD[1]); answer = randInt(rD[0], rD[1]); a = b*answer;
+      text = a + " ÷ " + b;
+    }
+    return { text: text, answer: answer };
+  }
+
+  function generateOptions(answer){
+    var opts = new Set([answer]);
+    var spread = Math.max(2, Math.round(answer*0.25));
+    var guard = 0;
+    while(opts.size < 3 && guard < 60){
+      guard++;
+      var delta = randInt(-spread, spread);
+      var val = answer + delta;
+      if(val < 0 || val === answer) continue;
+      opts.add(val);
+    }
+    if(opts.size < 3){ opts.add(answer+1); opts.add(answer+2); }
+    var arr = Array.from(opts).slice(0,3);
+    for(var i=arr.length-1;i>0;i--){
+      var j = Math.floor(Math.random()*(i+1));
+      var t = arr[i]; arr[i]=arr[j]; arr[j]=t;
+    }
+    return arr;
+  }
+
+  // ---------- storage ----------
+  async function loadProgress(){
+    try{
+      var r = await window.storage.get("bmg:totalSeeds", false);
+      totalSeeds = r ? JSON.parse(r.value) : 0;
+    }catch(e){ totalSeeds = 0; }
+    try{
+      var r2 = await window.storage.get("bmg:bestStars", false);
+      if(r2) bestStars = JSON.parse(r2.value);
+    }catch(e){ /* no saved stars yet */ }
+    renderMenuStats();
+  }
+  async function saveProgress(){
+    try{ await window.storage.set("bmg:totalSeeds", JSON.stringify(totalSeeds), false); }catch(e){}
+    try{ await window.storage.set("bmg:bestStars", JSON.stringify(bestStars), false); }catch(e){}
+  }
+
+  function renderMenuStats(){
+    document.getElementById("totalSeeds").textContent = totalSeeds;
+    Object.keys(OPS).forEach(function(op){
+      var el = document.querySelector('[data-stars-for="'+op+'"]');
+      var n = bestStars[op] || 0;
+      el.textContent = "★".repeat(n) + "☆".repeat(3-n);
+    });
+  }
+
+  // ---------- scene building ----------
+  var pathLength = 0;
+  var pathEl = null;
+  var islandPositions = [];
+
+  function buildScene(theme){
+    var svg = document.getElementById("sceneSvg");
+    var colors = THEME_COLORS[theme];
+    var showStars = theme === "div";
+    svg.innerHTML =
+      '<defs>' +
+        '<linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0%" stop-color="'+colors[0]+'"/>' +
+          '<stop offset="100%" stop-color="'+colors[1]+'"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      '<rect x="0" y="0" width="800" height="340" fill="url(#skyGrad)"/>' +
+      (showStars ? starsMarkup() : sunMarkup(theme)) +
+      '<g class="cloud cloud-1">'+cloudShape(60,60)+'</g>' +
+      '<g class="cloud cloud-2">'+cloudShape(300,40)+'</g>' +
+      '<g class="cloud cloud-3">'+cloudShape(150,100)+'</g>' +
+      '<path id="flightPath" d="M 40 260 C 200 60, 320 300, 430 160 S 620 40, 750 120" ' +
+        'fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/>' +
+      '<g id="islandsLayer"></g>' +
+      '<g id="birdGroup">' + birdMarkup() + '</g>';
+
+    pathEl = document.getElementById("flightPath");
+    pathLength = pathEl.getTotalLength();
+    islandPositions = [0, 0.33, 0.66, 1.0].map(function(f){
+      return pathEl.getPointAtLength(f*pathLength);
+    });
+    var islandsLayer = document.getElementById("islandsLayer");
+    islandsLayer.innerHTML = islandPositions.map(function(p, idx){
+      var isHome = idx === 3;
+      return islandMarkup(p.x, p.y, isHome);
+    }).join("");
+    positionBird(0);
+  }
+
+  function sunMarkup(theme){
+    var cx = theme === "mul" ? 660 : 700;
+    return '<circle cx="'+cx+'" cy="55" r="34" fill="#FFC857" opacity="0.95"/>';
+  }
+  function starsMarkup(){
+    var s = "";
+    var pts = [[80,40],[160,80],[260,30],[380,60],[500,25],[600,70],[690,40],[720,90],[120,110],[440,100]];
+    pts.forEach(function(p,i){
+      s += '<circle class="star-twinkle" style="animation-delay:'+(i*0.2)+'s" cx="'+p[0]+'" cy="'+p[1]+'" r="2" fill="#fff"/>';
+    });
+    var moonCx = 700;
+    s += '<circle cx="'+moonCx+'" cy="55" r="30" fill="#F4EFDD" opacity="0.95"/>';
+    return s;
+  }
+  function cloudShape(x,y){
+    return '<g transform="translate('+x+','+y+')" fill="#fff">' +
+      '<ellipse cx="0" cy="0" rx="26" ry="14"/>' +
+      '<ellipse cx="22" cy="-6" rx="20" ry="16"/>' +
+      '<ellipse cx="-22" cy="4" rx="18" ry="12"/>' +
+    '</g>';
+  }
+  function islandMarkup(x,y,isHome){
+    var scale = isHome ? 1.35 : 1;
+    return '<g transform="translate('+x+','+(y+18)+') scale('+scale+')">' +
+      '<ellipse cx="0" cy="14" rx="34" ry="12" fill="#C9A66B"/>' +
+      '<ellipse cx="0" cy="8" rx="26" ry="9" fill="#7A9B5C"/>' +
+      (isHome ?
+        '<rect x="-4" y="-34" width="8" height="30" fill="#8B5E3C"/>' +
+        '<circle cx="0" cy="-38" r="14" fill="#A9744A"/>' +
+        '<circle cx="-6" cy="-42" r="4" fill="#FFF3DC"/><circle cx="4" cy="-40" r="4" fill="#FFF3DC"/>'
+        :
+        '<circle cx="0" cy="-4" r="9" fill="#A9744A"/>'
+      ) +
+    '</g>';
+  }
+  function birdMarkup(){
+    return (
+      '<g id="birdBody" transform="scale(1.15)">' +
+        '<path class="wing" d="M -2 0 Q -22 -6 -26 10 Q -10 8 -2 4 Z" fill="#F2B24A"/>' +
+        '<ellipse cx="0" cy="0" rx="17" ry="13" fill="#4A90A4"/>' +
+        '<ellipse cx="10" cy="-2" rx="8" ry="7" fill="#4A90A4"/>' +
+        '<circle cx="13" cy="-4" r="2.4" fill="#20313A"/>' +
+        '<path d="M 18 -2 L 27 1 L 18 4 Z" fill="#F2B24A"/>' +
+        '<path d="M -14 6 L -22 12 L -12 10 Z" fill="#E85D75"/>' +
+      '</g>'
+    );
+  }
+
+  function positionBird(fraction, mood){
+    if(!pathEl) return;
+    var p = pathEl.getPointAtLength(Math.min(1,Math.max(0,fraction))*pathLength);
+    var lookAhead = pathEl.getPointAtLength(Math.min(1,Math.max(0,fraction+0.01))*pathLength);
+    var angle = Math.atan2(lookAhead.y - p.y, lookAhead.x - p.x) * 180/Math.PI;
+    var g = document.getElementById("birdGroup");
+    g.setAttribute("transform", "translate("+p.x+","+p.y+") rotate("+(angle*0.25)+")");
+    g.classList.toggle("sad", mood === "sad");
+  }
+
+  function showToast(msg){
+    var t = document.getElementById("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(showToast._tm);
+    showToast._tm = setTimeout(function(){ t.classList.remove("show"); }, 1600);
+  }
+
+  // ---------- game flow ----------
+  function startOperation(op){
+    state.op = op;
+    state.correctCount = 0;
+    state.attempts = 0;
+    state.correctAttempts = 0;
+    state.streak = 0;
+    state.runSeeds = 0;
+    state.locked = false;
+
+    document.getElementById("menu-screen").classList.remove("active");
+    document.getElementById("game-screen").classList.add("active");
+    buildScene(OPS[op].theme);
+    updateHud();
+    nextQuestion();
+  }
+
+  function updateHud(){
+    document.getElementById("islandLabel").textContent =
+      "Island " + Math.min(3, currentLevel()) + " of 3 — " + OPS[state.op].name;
+    document.getElementById("streakVal").textContent = state.streak;
+    document.getElementById("runSeeds").textContent = state.runSeeds;
+  }
+
+  function nextQuestion(){
+    var q = generateQuestion(state.op, currentLevel());
+    state.current = q;
+    var opts = generateOptions(q.answer);
+    document.getElementById("qExpr").textContent = q.text + " = ?";
+    var row = document.getElementById("optionsRow");
+    row.innerHTML = "";
+    opts.forEach(function(val){
+      var b = document.createElement("button");
+      b.className = "opt-btn";
+      b.textContent = val;
+      b.addEventListener("click", function(){ handleAnswer(val, b); });
+      row.appendChild(b);
+    });
+    state.locked = false;
+  }
+
+  function handleAnswer(val, btnEl){
+    if(state.locked) return;
+    state.locked = true;
+    state.attempts++;
+    var correct = val === state.current.answer;
+    var buttons = document.querySelectorAll(".opt-btn");
+
+    if(correct){
+      state.correctAttempts++;
+      state.correctCount++;
+      state.streak++;
+      var gain = 10 * (state.streak >= 3 ? 2 : 1);
+      state.runSeeds += gain;
+      btnEl.classList.add("correct");
+      positionBird(state.correctCount / TOTAL_NEEDED);
+      updateHud();
+
+      if(state.correctCount === PER_LEVEL || state.correctCount === PER_LEVEL*2){
+        showToast("Island reached! On to the next stretch 🌊");
+      }
+
+      if(state.correctCount >= TOTAL_NEEDED){
+        setTimeout(finishRun, 700);
+        return;
+      }
+      setTimeout(function(){ nextQuestion(); }, 650);
+    } else {
+      state.streak = 0;
+      btnEl.classList.add("wrong");
+      buttons.forEach(function(b){
+        if(parseInt(b.textContent,10) === state.current.answer) b.classList.add("correct");
+      });
+      document.getElementById("questionCard").classList.add("shake");
+      positionBird(state.correctCount / TOTAL_NEEDED, "sad");
+      updateHud();
+      setTimeout(function(){
+        document.getElementById("questionCard").classList.remove("shake");
+        positionBird(state.correctCount / TOTAL_NEEDED);
+        nextQuestion();
+      }, 1100);
+    }
+  }
+
+  async function finishRun(){
+    var accuracy = state.attempts > 0 ? state.correctAttempts / state.attempts : 0;
+    var stars = accuracy >= 0.9 ? 3 : accuracy >= 0.7 ? 2 : 1;
+    if(stars > (bestStars[state.op] || 0)) bestStars[state.op] = stars;
+    totalSeeds += state.runSeeds;
+    await saveProgress();
+
+    document.getElementById("finalStars").innerHTML =
+      "★".repeat(stars) + '<span class="dim">' + "★".repeat(3-stars) + "</span>";
+    document.getElementById("finalStats").textContent =
+      state.correctAttempts + " of " + state.attempts + " correct · +" + state.runSeeds + " seeds";
+    document.getElementById("completeOverlay").classList.remove("hidden");
+  }
+
+  function backToMenu(){
+    document.getElementById("game-screen").classList.remove("active");
+    document.getElementById("menu-screen").classList.add("active");
+    renderMenuStats();
+  }
+
+  // ---------- wiring ----------
+  document.querySelectorAll(".op-card").forEach(function(card){
+    card.addEventListener("click", function(){ startOperation(card.getAttribute("data-op")); });
+  });
+  document.getElementById("backBtn").addEventListener("click", backToMenu);
+  document.getElementById("chooseOtherBtn").addEventListener("click", function(){
+    document.getElementById("completeOverlay").classList.add("hidden");
+    backToMenu();
+  });
+  document.getElementById("flyAgainBtn").addEventListener("click", function(){
+    document.getElementById("completeOverlay").classList.add("hidden");
+    startOperation(state.op);
+  });
+
+  loadProgress();
+})();
+</script>
+</body>
+</html>
